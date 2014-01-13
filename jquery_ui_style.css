@@ -1,0 +1,94 @@
+input.text { 
+  margin-bottom:12px; 
+	width:95%; 
+	padding: .4em; 
+}
+fieldset { 
+  padding:0; 
+	border:0; 
+	margin-top:25px; 
+}
+h1 { 
+	font-size: 1.2em; 
+	margin: .6em 0; 
+}
+div#users-contain { 
+	width: 350px;
+	margin: 20px 0; 
+}
+div#users-contain table { 
+	margin: 1em 0; 
+	border-collapse: 
+	collapse; width: 100%; 
+}
+div#users-contain table td, div#users-contain table th { 
+	border: 1px solid #eee; 
+	padding: .6em 10px;
+	text-align: left; 
+}
+.ui-dialog .ui-state-error { 
+	padding: .3em; 
+	background:red;
+}
+.validateTips { 
+	border: 1px solid transparent; 
+	padding: 0.3em; 
+}
+.ui-dialog {
+	-webkit-border-radius: 5px;                                                                                                                    
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	background: #ffffff !important;
+	border: 1px solid;
+	border-color:#FF913A;
+
+	text-align:left;
+	background: #F7F7F7;
+		
+	position:absolute;
+	top:10%;
+  }
+
+.ui-dialog-titlebar{
+	text-align:center;                                                                                                                             
+	background-color:#FF913A;
+	padding: 10px 10px;
+	height:auto;
+  }
+.ui-dialog-title{
+  }
+.ui-widget-header{
+}
+.ui-dialog-titlebar-close{
+	display:none;
+  }
+
+.ui-dialog-content{
+	padding: 20px;
+	text-align:left;
+	background: #F7F7F7;
+	height:363px;
+  }
+.ui-dialog-content label{
+	margin-right:20px;
+  }
+.ui-dialog-content input{
+
+  }
+.ui-dialog-buttonpane{
+	padding-bottom: 5%;
+  }   
+
+.ui-dialog-buttonset{
+	float:right;
+  }
+  .ui-widget-overlay { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 230%; 
+    background: #000000;
+    opacity: 0.8;
+  }

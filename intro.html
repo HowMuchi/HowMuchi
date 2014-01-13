@@ -1,0 +1,133 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=big5"/>
+  <link href="intro.css" rel="stylesheet"/>
+  <link href="jquery_ui_style.css" rel="stylesheet"/>
+  <link href="image_ani.css" rel="stylesheet"/>
+  <link href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet" type="text/css"/>
+  <link href="normalize.css" rel="stylesheet" type="text/css"/>
+  <link href="datepicker.css" rel="stylesheet" type="text/css"/>
+  <title>HowMuchi</title>
+</head>
+
+<body>
+  <div id="background">
+    <!--Header Design-->
+    <div id="header">
+      <div id="logo">
+	HowMuchi
+      </div>
+
+      <div id="menu">
+	<ul class="meunubar">
+	  <li><a href="index.html"><span>首頁</span></a></li>
+	  <li><a href="javascript:create_act()"><span>開團</span></a></li>
+	  <li><a href="index.html"><span>啥團</span></a></li>
+	  <li><a href="index.html"><span>聯絡我們</span></a></li>
+	</ul>
+      </div>
+
+      <div id="member">
+	<ul class="menubar">
+	  <li><a  href="javascript:void(0);"><span id="create_user">註冊</span></a></li>
+	  <li><a href="#" id="menu_login"><span>登入</span></a></li>
+	</ul>
+      </div>
+      <div id="member_after">
+	<ul class="menubar">
+	  <li><a href="#" id="menu_logout"><span>登出</span></a></li>
+	</ul>
+      </div>
+
+
+    </div>
+    <!--End of Header-->
+
+    <div class="sign_in_form_style" id="sign_in_form">
+	帳號:   <input type="text" name="SIaccount"></br>
+	密碼:   <input type="password" name="SIpassword">
+	<p id="login">登入</p>
+    </div>
+    <div class="sign_in_form_style" id="sign_in_information">
+    </div>
+    <!--END-->
+    <!--Content Desigh-->
+    <div id="content">
+	    <div class="text">
+	      <h3>大家都是好麻吉 一起玩樂 一起吃喝</h3>
+	      </br>
+	      <h3>關於我們</h3>
+	      <hr></hr>
+	      <div class="wrap">
+	      <div class="staff"><img src="wei.jpg"></img></div>
+	      <div class="staff"><img src="min.jpg"></img></div>
+	      <div class="staff"><img src="pei.jpg"></img></div>
+	      <div class="staff"><img src="yo.jpg"></img></div>
+	      <div class="staff"><img src="Me.jpg"></img></div>
+	</div>
+
+    </div>
+    <!--End of Content-->
+    <!--Content of Dialog-->
+
+    <div id="open_act_page" title="Open Activities">
+      <select id="items">
+	<option value="1">出遊</option>
+	<option value="2">美食</option>
+	<option value="3">團購</option>
+	<option value="4">缺咖</option>
+      </select>
+      <input id='title_input' name='title' type="text"><br>
+      <label>想找的人數：</label><br>
+      <input name='people' type="text">人<br>
+      <label>Date: </label><br>
+      <input name='date' type="text" class="datepicker" /><br>
+      <label>行程簡介</label></br>
+      <textarea rows="5" cols="50" name='introduction' placeholder="Describe your schedule!!"></textarea>
+    </div>
+
+    <div id="sign_up_dialog" title="Create new user">
+
+      <p id="sign_up_tips" 	class="validateTips">All form fields are required.</p>
+      <form>
+	<fieldset>
+	  <label for="account">Account</label>
+	  <input type="text" id="SUaccount" value="" class="text ui-widget-content ui-corner-all">
+	  <label for="password">Password</label>
+	  <input type="password" id="SUpassword" value="" class="text ui-widget-content ui-corner-all">
+	  <label for="email">Email</label>
+	  <input type="text" id="email"  value="" class="text ui-widget-content ui-corner-all">
+	  <label for="name">Name</label>
+	  <input type="text" id="name" class="text ui-widget-content ui-corner-all">
+	  <p id='signUp_info'><p>
+	</fieldset>
+      </form>
+    </div>
+  </div>
+  <!--End of Dialog-->
+</div>
+<!--End of Background-->
+<script type="text/javascript" src='jquery.mu.image.resize.js'></script>
+<script type='text/javascript' src="jquery-1.9.1.min.js"></script>	
+<!--cript type='text/javascript' src="hot.js"></script> -->
+<script type='text/javascript' src="show.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
+<script type="text/javascript" src="image_ani.js" ></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="intro.js"></script>
+<script type="text/javascript" src="jquery_cookie.js"></script>
+<script>
+  $(document).ready(function(){
+    if($.cookie('name')!=null){
+	/*$('#member').html(
+	  "<p><a id='logout' type='button' href='javascript:logout()'><span>登出</span></a></p>"
+	  );*/
+	$('#member').css({"display":"none"});
+	$('#member_after').css({"display":"inline"});
+    }
+  });
+</script>
+
+
+
+</body>

@@ -1,0 +1,144 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=big5"/>
+  <link href="main.css" rel="stylesheet"/>
+  <link href="image_ani.css" rel="stylesheet"/>
+  <link href="jquery_ui_style.css" rel="stylesheet"/>
+  <link href="list.css" rel="stylesheet"/>
+  <link href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet" type="text/css"/>
+  <link href="css/custom-theme/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+  <title>HowMuchi</title>
+</head>
+
+<body>
+  <div id="background">
+    <!--Header Design-->
+    <div id="header">
+      <div id="logo">
+	<img src="LOGO.png"></img>
+      </div>
+      <div id="menu">
+	<ul class="meunubar">
+	  <li><a href="index.html"><span>首頁</span></a></li>
+	  <li><a href="javascript:create_act()"><span>開團</span></a></li>
+	  <li><a id="user_btn" href="index.html"><span>啥團</span></a></li>
+	  <li><a href="intro.html"><span>關於我們</span></a></li>
+	</ul>
+      </div>
+
+      <div id="member" class='textright'>
+	<ul class="menubar">
+	  <li><span id="create_user">註冊</span></li>
+	  <li><span id="menu_login">登入</span></li>
+	</ul>
+      </div>
+      <div id="member_after" class='textright'>
+	<ul class="menubar">
+	  <li><span id="menu_logout">登出</span></li>
+	</ul>
+      </div>
+
+
+    </div>
+    
+    <div id="list_menu">
+      <div id="list_all" class="list_item"><img id="img_all" src="img/howmuch.png"></img><div id="text_all" class="list_text_style">All</div></div>
+      <div id="list_food" class="list_item"><img id="img_food" src="img/food.png"></img><div id="text_food" class="list_text_style">Food</div></div>
+      <div id="list_travel" class="list_item"><img id="img_travel" src="img/travel.png"></img><div id="text_travel" class="list_text_style">Travel</div></div>
+      <div id="list_buy" class="list_item"><img id="img_buy" src="img/buy.png"></img><div id="text_buy"class="list_text_style">Buy</div></div>
+    </div>
+    <!--End of Header-->
+
+    <div class="sign_in_form_style" id="sign_in_form">
+	帳號:   <input type="text" name="SIaccount" id="in"></br>
+	密碼:   <input type="password" name="SIpassword" id="in_1">
+	<p id="login">登入</p>
+    </div>
+    <div class="sign_in_form_style" id="sign_in_information">
+    </div>
+    <!--END-->
+  <!--Remindr-->
+  <div id='reminder'>
+  </div>
+    <!--Content Desigh-->
+    <div id="content">
+      <div id='content_left'>
+      </div>
+      <div id='content_right'>
+	<ul id='user_information'>
+	  <li>取消跟團</li>
+	  <li>取消開團</li>
+	  <li id='user_followed'>已參加</li>
+	  <li id='user_created'>已開團</li>
+	  <li>用戶資訊</li>
+	</ul>
+      </div>
+    </div>
+    <!--End of Content-->
+
+    <!--Content of Dialog-->
+
+      <div id="join_page" title="參加活動" name="123">
+      </div>
+    <div id="open_act_page" title="Open Activities">
+      <select id="items" name='items'>
+	<option value="1">出遊</option>
+	<option value="2">美食</option>
+	<option value="3">團購</option>
+	<option value="4">缺咖</option>
+      </select>
+      <input id='title_input' name='title' type="text" value="[出遊]"><br>
+      <label>想找的人數：</label><br>
+      <input name='people' type="text">人<br>
+      <label>Date: </label><br>
+      <input name='date' type="text" class="datepicker" /><br>
+      <label>行程簡介</label></br>
+      <textarea rows="5" cols="50" name='introduction' placeholder="Describe your schedule!!"></textarea>
+    </div>
+
+    <div id="sign_up_dialog" title="Create new user">
+
+      <p id="sign_up_tips" 	class="validateTips">All form fields are required.</p>
+      <form>
+	<fieldset>
+	  <label for="account">Account</label>
+	  <input type="text" id="SUaccount" value="" class="text ui-widget-content ui-corner-all">
+	  <label for="password">Password</label>
+	  <input type="password" id="SUpassword" value="" class="text ui-widget-content ui-corner-all">
+	  <label for="email">Email</label>
+	  <input type="text" id="email"  value="" class="text ui-widget-content ui-corner-all">
+	  <label for="name">Name</label>
+	  <input type="text" id="name" class="text ui-widget-content ui-corner-all">
+	  <p id='signUp_info'><p>
+	</fieldset>
+      </form>
+    </div>
+  </div>
+  <!--End of Dialog-->
+
+</div>
+<!--End of Background-->
+<!--script type="text/javascript" src='jquery.mu.image.resize.js'></script-->
+<!--script type='text/javascript' src="jquery.js"></script-->	
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type='text/javascript' src="hot.js"></script> 
+<script type='text/javascript' src="show.js"></script>
+<script type='text/javascript' src="list.js"></script>
+<script type="text/javascript" src="image_ani.js" ></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="jquery_cookie.js"></script>
+<script>
+  $(document).ready(function(){
+    if($.cookie('name')!=null){
+	/*$('#member').html(
+	  "<p><a id='logout' type='button' href='javascript:logout()'><span>登出</span></a></p>"
+	  );*/
+	$('#member').css({"display":"none"});
+	$('#member_after').css({"display":"inline"});
+    }
+  });
+</script>
+
+
+
+</body>
