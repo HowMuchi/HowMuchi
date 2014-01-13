@@ -1,0 +1,134 @@
+#header{
+	width:70%;
+	height:200px;
+	/*background-color:rgb(26,26,26);*/
+	/*background-color:rgb(50,83,109);*/
+	position:absolute;
+	left:18%;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+      }
+
+#logo{
+	font-family:'Yanone Kaffeesatz';
+	color:#FF8C00;
+	font-size:8em;
+	position:absolute;
+	left:4%;
+	top:4%;
+}
+
+#menu{
+	color:white;
+	font-size:2em;	
+	position:absolute;
+	left: 28%;
+	top:65%;
+	/*margin-left:600px;*/
+	font-family:"微軟正黑體","Microsoft JhengHei";
+      }
+   
+#menu ul{
+  list-style:none;
+  display:block;
+}
+
+#menu li:first-child{
+	border-left:none;
+}
+#menu li{
+	display:inline;
+	padding-left:20px;
+	padding-right:20px;
+	border-left: 1px solid;
+}
+#menu li a{
+	text-decoration:none;
+}
+#menu li a:link , #menu li a:visited{
+	color:white;
+}
+#menu li span:hover{
+        background-color:#BB7826;
+}
+/*Member Setting*/
+#member{
+	width:400px;
+  	position:absolute;
+	right:80px;
+	top:60px;
+	color:white;
+	font-size:2em;	
+	font-family:"微軟正黑體","Microsoft JhengHei";
+}
+#member ul.menubar{
+	list-style:none;
+	display:block;
+}
+#member ul.menubar li:first-child{
+  	border-left:none;
+}
+#member ul.menubar li{
+	border-left:1px solid;
+	display:inline;
+	padding-right:15px;
+	padding-left:15px;
+}
+#member li a{
+	text-decoration:none;
+}
+#member li a:link , #member li a:visited{
+	color:white;
+}
+#member li span:hover{
+        background-color:#BB7826;
+}
+
+/* End of header*/
+#content{
+	height:70%;
+	width:60%;
+	position:relative;
+	top:330px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#regist{
+	height:80%;
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+/*	background-color:red;*/
+}
+#regist .text{
+	text-align:center;
+	font-size:3em;
+	margin-bottom:10px;
+}
+.regi{
+  	padding-top:20px;
+	font-family:'Verdana';
+	font-size:2em;
+	text-align:center;
+}
+.regi .a,.regi .b , .regi .c , .regi .d {
+	position:relative;
+	display:block;
+}
+.regi .e,.regi .f,.regi .g,.regi .h{
+	margin-bottom: 20px;
+}
+#background{
+	width:100%;
+	height:100%;
+  background-image:url("ocean.jpg");
+  background-size:cover;
+}
+
+.account{
+ margin-left:30px;
+}
+.password{
+
+}

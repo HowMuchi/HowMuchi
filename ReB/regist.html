@@ -1,0 +1,57 @@
+<head>
+  <link href="regi.css" rel="stylesheet"/>
+  <link href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet" type="text/css"/>
+  <meta http-quiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>HowMuchi</title>
+</head>
+
+<body>
+  	<div id="background">
+  	<!--Header Design-->
+  	<div id="header">
+	<div id="logo">
+	  HowMuchi
+	</div>
+
+	<div id="menu">
+	  <ul class="meunubar">
+	    <li><a href="index.html"><span>首頁</span></a></li>
+	    <li><a href="index.html"><span>開團</span></a></li>
+	    <li><a href="index.html"><span>啥團</span></a></li>
+	    <li><a href="index.html"><span>聯絡我們</span></a></li>
+	  </ul>
+	</div>
+	
+	<div id="member">
+	  <ul class="menubar">
+	    <li><a href="regist.html"><span>註冊</span></a></li>
+	    <li><span>登入</span></li>
+	  </ul>
+	</div>
+
+
+	</div>
+	<!--End of Header-->
+	<!--Content Design-->
+	<div id="content">
+	 <form id="MyForm" width="400px" title="註冊">
+	   <input type="text" name="Name_1" place="姓名" />
+	   <input type="text" name="Email_1" validate="mail" place="電子郵件" />
+	   <input type="text" name="Username_1" place="帳號" require="true" label="賬號" pre-fix="" />
+	   <input type="password" name="Password_1" require="true" label="密碼" place="密碼" />
+	   <input type="button" value="註冊" />
+	 </form>
+	</div>
+	<!--End of Content-->
+      </div>
+      <!--End of Background-->
+
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+      <script type="text/javascript" src="js/formly.js"></script>
+      <link rel="stylesheet" href="css/formly.css" type="text/css" />
+      <script type="text/javascript">
+	$(document).ready(function()
+	  { $('#MyForm').formly({'onBlur':false});
+	       });
+	     </script>
+</body>
