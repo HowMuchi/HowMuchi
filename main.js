@@ -182,7 +182,7 @@ $(function() {
 	  $(document).ready(function() { 
 	    $('#myForm').submit();
 	  });
-	  //location.reload(true);
+	  location.reload(true);
 	},
 	error:function (xhr, ajaxOptions, thrownError) {
 	  alert(console.log(xhr));        
