@@ -220,7 +220,7 @@ body{
 
 #content{
   /* left:245px;*/
-  width:70%;
+  width:72%;
   height:100%;
   /*background-color:#63add0;*/
   margin-top:30px;
@@ -232,7 +232,7 @@ body{
 
 #content_left{
   position:relative;
-  width:80%;
+  width:78%;
   height:100%;
   float:left;
 }
@@ -240,9 +240,12 @@ body{
   position:relative;
   width:20%;
   height:100%;
-  background-color:#26cfd6;
+  background-color:#86B81C;
   height:200px;
   float:right;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  border:solid 5px #BED323;
 }
 .orange{
         float:right;	
