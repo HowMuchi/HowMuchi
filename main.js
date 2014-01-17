@@ -1,4 +1,3 @@
-
 $('#logo').mouseover(function(){
 
   $(this).addClass('animated shake');
@@ -464,33 +463,7 @@ $.get('get_act.php',function(data){
      file_exist = hot[i].category;
     id_name[i] = hot[i].a_id;
     $("#content_left").append(
-	'<div id = box_5>'
-	+'<div id=box_5_title >'
-	+'<p>'+ hot[i].title + '</p>' 
-/*	+'<img class="monkey monkey_'+hot[i].a_id+ '"  src="image/monkey.png"   name=' + hot[i].a_id + ' >'
-	+'</div>'*/
-	+'<div id="box_5_image" class="main" style='+"background-image:url('image2/" +file_exist+".jpg');>"
-	+'<div class="sub">come here</br></div>'
-	+'</div>'
-	+'<div id="box_5_bottom">'
-	+'<div id="box_5_text">'
-	+'<div id="box_5_info">' 
-	+'<p id="act_content">'
-	+'<a id="money">日期:</a>'
-	+hot[i].date 
-	+'</br>'
-	+'<a id="money">人數:</a>'
-	+hot[i].amount
-	+'/'
-	+'</p>'
-	+'</div>'
-	+'<div id="box_5_button">'
-	+'<button type="button" href="#" id=test'+ hot[i].a_id  +' class="orange" name=' + hot[i].a_id + '>我要參加</button>'
-	+'<button type="button" href="#" id=discard'+ hot[i].a_id  +' class="orange1" name=' + hot[i].a_id + '>取消參加</button>'
-	+'</div>'
-	+'</div>' 
-	+'</div>' 
-	+'</div>');
+	);
     i--;
   }
   for(var i=1;i<hot.length;i++){
