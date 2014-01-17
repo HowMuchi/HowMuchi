@@ -469,10 +469,12 @@ $.get('get_act.php',function(data){
 	+'<p>'+ hot[i].title + '</p>'
 	+'</div>'
 	+'<div id="box_5_content">'
-	+'<div id="box_5_image" class="main" style='+"background-image:url('image2/" +file_exist+".jpg');>"
+	+'<div id="box_5_image" >'
+	+'<img src="image2/'+file_exist+'.jpg">'
 	+'</div>'
 	+'<div id="box_5_text">'
-	+'<p id="act_content">'
+	+'<div id="box_5_info">'
+	+'<p>'
 	+'<a id="money">日期:</a>'
 	+hot[i].date 
 	+'</br>'
@@ -480,9 +482,9 @@ $.get('get_act.php',function(data){
 	+hot[i].amount
 	+'/'
 	+'</p>'
+	+'</div>'
 	+'<div id="box_5_button">'
 	+'<button type="button" href="#" id=test'+ hot[i].a_id  +' class="orange" name=' + hot[i].a_id + '>我要參加</button>'
-	+'<button type="button" href="#" id=discard'+ hot[i].a_id  +' class="orange1" name=' + hot[i].a_id + '>取消參加</button>'
 	+'</div>'
 	+'</div>'
 	+'</div>'
