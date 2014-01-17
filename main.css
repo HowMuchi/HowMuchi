@@ -374,36 +374,43 @@ body{
   width:360px;
   height:20px;
   margin-left:8px;
-  margin-bottom:-32px;
-  margin-top:-7px;
   font-size:22px;
   font-family:微軟正黑體;
 }
+#box_5_content{
+	width: 360px;
+	height: 300px;
+	margin-top:20px;
+}
 #box_5_image{
-  margin-top: 55px;
-  margin-left: 8px;
+	width: 360px;
+	height: 200px;
+        margin-left:8px;
+}
+#box_5_image img{
+	width:320px;
+	height:200px;
 }
 #box_5_text{
   width:360px;
-  height:300px;
+  height:100px;
   font-family:微軟正黑體;
   color:#06f;
+  margin-top:5px;
+        margin-left:8px;
 }
 #box_5_info{
+  /*position:relative;*/
   float:left;
 }
 #box_5_button{
+  margin-top:9px;
   float:right;
 }
 #money{
   font-size:20px;
 }
 
-.monkey{
-  display:none;
-  margin-left:325px;
-  margin-top:-58px;
-}
 #ss
 {
   font-size:28px;
