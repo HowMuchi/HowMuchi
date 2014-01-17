@@ -1,0 +1,12 @@
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+.progress_outer {
+  border: 1px solid #000;
+}
+.progress {
+  width: 20%;
+  background: #DEDEDE;
+  height: 20px;  
+}
