@@ -288,9 +288,9 @@ $(function() {
       url:'attending_list.php', // CGI URL
       success:function(data){
 	var state=JSON.parse(data);
-	if((state.atd_status)){
+	/*if((state.atd_status)){
 	  $('.monkey_'+state.a_id).show();
-	}
+	}*/
 	$('#test'+state.a_id).hide();
 	$('#discard'+state.a_id).show();
       }
@@ -467,8 +467,8 @@ $.get('get_act.php',function(data){
 	'<div id = box_5>'
 	+'<div id=box_5_title >'
 	+'<p>'+ hot[i].title + '</p>' 
-	+'<img class="monkey monkey_'+hot[i].a_id+ '"  src="image/monkey.png"   name=' + hot[i].a_id + ' >'
-	+'</div>'
+/*	+'<img class="monkey monkey_'+hot[i].a_id+ '"  src="image/monkey.png"   name=' + hot[i].a_id + ' >'
+	+'</div>'*/
 	+'<div id="box_5_image" class="main" style='+"background-image:url('image2/" +file_exist+".jpg');>"
 	+'<div class="sub">come here</br></div>'
 	+'</div>'
