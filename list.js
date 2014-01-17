@@ -185,7 +185,6 @@ function get_follow_post(){
       var i = 0;
       var newest = [];
       var cur_time = new Date();
-    alert(data);
       while(i < hot.length){
 	//time += hot[i].date + ',\n';
 	var time = new Date(hot[i].date) ;
