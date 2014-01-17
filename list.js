@@ -114,7 +114,7 @@ function abc(category){
 	     $('#content_left').removeClass("animated fadeOutDown");
 	   $('#content_left').html("");
 	   $('#content_left').css({"opacity":"0"});
-	   display_content(data);
+	   display_content(data, 1);
 	   $('#content_left').addClass('animated fadeInUp');
 	   });
 	  },
@@ -136,7 +136,7 @@ function abc(category){
 	     $('#content_left').removeClass("animated fadeOutDown");
 	   $('#content_left').html("");
 	   $('#content_left').css({"opacity":"0"});
-	   display_content(data);
+	   display_content(data, 0);
 	   $('#content_left').addClass('animated fadeInUp');
 	   });
 	  },
@@ -156,7 +156,7 @@ function abc(category){
 	     $('#content_left').removeClass("animated fadeOutDown");
 	   $('#content_left').html("");
 	   $('#content_left').css({"opacity":"0"});
-	   display_content(data);
+	   display_content(data, 1);
 	   $('#content_left').addClass('animated fadeInUp');
 	   });
 	  },
@@ -185,11 +185,10 @@ function get_follow_post(){
       var i = 0;
       var newest = [];
       var cur_time = new Date();
-    alert(data);
       while(i < hot.length){
 	//time += hot[i].date + ',\n';
 	var time = new Date(hot[i].date) ;
-	if((time - cur_time)/86400000 > 3.00000 && (time - cur_time) > 0)
+	if((time - cur_time) > 0)
 	    newest.push(i);
 	i++;
       }
@@ -202,7 +201,7 @@ function get_follow_post(){
   }
 }
 
-function display_content(data){
+function display_content(data, fromwhere){
   var hot = JSON.parse(data); 
   var but;
   var button_name;
@@ -210,38 +209,41 @@ function display_content(data){
   var id_name = new Array(1000);
   var test;
   var image;
+  var file_exist;
   //$('.image').muImageResize({width: 150, height:150}); 
-  while(i>=0){
+  while(i>0){
+    if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
+     file_exist = hot[i].a_id;
+   else
+     file_exist = hot[i].category;
     id_name[i] = hot[i].a_id;
     $("#content_left").append(
-      '<div id = box_5>'
-      +'<div id=box_5_title >'
-      +'<p>'+ hot[i].title + '</p>' 
-      +'<img class="monkey monkey_'+hot[i].a_id+ '"  src="image/monkey.png"   name=' + hot[i].a_id + ' >'
-      +'</div>'
-      +'<div id="box_5_image" class="main" style='+"background-image:url('image/" +hot[i].category+".jpg');>"
-      +'<div class="sub">come here</br></div>'
-      +'</div>'
-      +'<div id="box_5_bottom">'
-      +'<div id="box_5_text">'
-      +'<div id="box_5_info">' 
-      +'<p id="act_content">'
-      +'<a id="money">日期:</a>'
-      +hot[i].date 
-      +'</br>'
-      +'<a id="money">人數:</a>'
-      +hot[i].amount
-      +'/'
-      +'</p>'
-      +'</div>'
-      +'<div id="box_5_button">'
-      +'<button type="button" href="#" id=test'+ hot[i].a_id  +' class="orange" name=' + hot[i].a_id + '>我要參加</button>'
-      +'<button type="button" href="#" id=discard'+ hot[i].a_id  +' class="orange1" name=' + hot[i].a_id + '>取消參加</button>'
-      +'</div>'
-      +'</div>' 
-      +'</div>' 
-      +'</div>');
-     i--;
+	'<div id = box_5>'
+	+'<div id=box_5_title >'
+	+'<p>'+ hot[i].title + '</p>'
+	+'</div>'
+	+'<div id="box_5_content">'
+	+'<div id="box_5_image" >'
+	+'<img src="image2/'+file_exist+'.jpg">'
+	+'</div>'
+	+'<div id="box_5_text">'
+	+'<div id="box_5_info">'
+	+'<p>'
+	+'<a id="money">日期:</a>'
+	+hot[i].date 
+	+'</br>'
+	+'<a id="money">人數:</a>'
+	+hot[i].amount
+	+'/'
+	+'</p>'
+	+'</div>'
+	+'<div id="box_5_button">'
+	+'<button type="button" href="#" id=test'+ hot[i].a_id  +' class="orange" name=' + hot[i].a_id + '>我要參加</button>'
+	+'</div>'
+	+'</div>'
+	+'</div>'
+	);
+    i--;
   }
   for(var i=1;i<hot.length;i++){
     $("#test"+hot[i].a_id).click(function(){
@@ -301,9 +303,9 @@ $(function() {
 
 
 function display_reminder(data, newest){
-  var i = 0;
+  var i = 1;
   var hot = JSON.parse(data);
-  $.each([0,1,2,3,4,5], function(index, value){
+  $.each(newest, function(index, value){
       var box_name = '#reminder_box_' + index;
     $('.reminder').css({"display":"block"});
     $('#reminder').append(
@@ -311,7 +313,7 @@ function display_reminder(data, newest){
     $("#activity_info_dialog").attr("name",hot[value].a_id);
     $(box_name).click(function(){
     $( "#activity_info_dialog" ).empty();
-    $("#activity_info_dialog").append("標題"+"  "+hot[value].date+"</br>"+
+    $("#activity_info_dialog").append("標題"+"  "+hot[value].title+"</br>"+
 		  "出遊時間"+"   "+hot[value].date+"</br>"+
 		  "需求總數"+"    "+hot[value].amount+"</br>"+
 		  "簡介"+"    "+hot[value].introduction);
@@ -319,15 +321,15 @@ function display_reminder(data, newest){
     });
     $(box_name).css({"top":$(window).height()-60*(index+1)-5*(index)});
     $(box_name).hover(function(){
-      $(box_name).finish();
+      $(box_name).stop(true, false);
       $(box_name).css({opacity:1});
     },function(){
       $(box_name).css({opacity:0.7});
       $(box_name).delay(3000);
-      $(box_name).animate({opacity:0}, 500);
+      $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
     });
     $(box_name).delay(3000);
-    $(box_name).animate({opacity:0}, 500, function(){});
+    $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
   i++;
   });
 }
