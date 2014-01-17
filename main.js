@@ -28,6 +28,7 @@ $('#login').click(function(){
 	});
 	$('#member').css({"display":"none"});
 	$('#member_after').css({"display":"inline"});
+	get_follow_post();
       }
       else{
 	$('#sign_in_information').html(data);
