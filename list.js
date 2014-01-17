@@ -182,24 +182,18 @@ function get_follow_post(){
     url:'get_user_post.php',
     success:function(data){
       var hot = JSON.parse(data);
-      var time;
       var i = 0;
       var newest = [];
+      var cur_time = new Date();
+    alert(data);
       while(i < hot.length){
 	//time += hot[i].date + ',\n';
-	if(i%3 == 0)
-    		newest.push(i.toString());
+	var time = new Date(hot[i].date) ;
+	if((time - cur_time)/86400000 > 3.00000 && (time - cur_time) > 0)
+	    newest.push(i);
 	i++;
       }
-      i = 0;
-      while(i < newest.length){
-	time += newest[i] + ",";
-	i++;
-      }
-      var dd= new Date(hot[1].date);
-      var ddd = new Date();
       display_reminder(data, newest);
-      //alert(hot[0].date);
     },
     error:function(xhr, ajaxOptions, throwError) {
       alert(console.log(xhr));
@@ -284,19 +278,57 @@ function display_content(data){
   }
 }
 
+$(function() {
+  $( "#activity_info_dialog" ).dialog({
+    autoOpen: false,
+  height: 500,
+  width: 600,
+  modal:true,
+  buttons: {
+    "我知道了": function() {
+      $( this ).dialog( "close" );
+    }
+  },
+  position: {my:"center", at:"top", of:window },
+  show: {
+    duration: 300
+  },
+  hide: {
+    duration: 300
+  }
+  })
+});
+
 
 function display_reminder(data, newest){
-  var i = 1;
+  var i = 0;
   var hot = JSON.parse(data);
-  while(i < 5){
+  $.each([0,1,2,3,4,5], function(index, value){
+      var box_name = '#reminder_box_' + index;
     $('.reminder').css({"display":"block"});
-  $('#reminder').append(
-      '<div class=\'reminder_box\' id=\'reminder_box_'+i+'\'>yoyoman</div>');
-  $('#'+'reminder_box_'+i).css({"top":$(window).height()-$(window).height()*0.1*i-10});
-  $('#'+'reminder_box_'+i).animate({opacity:1}, 1000);
-    $('#'+'reminder_box_'+i).animate({opacity:0}, 500, function(){
+    $('#reminder').append(
+      '<div class=\'reminder_box\' id=\'reminder_box_'+index+'\'>'+hot[value].title+'</div>');
+    $("#activity_info_dialog").attr("name",hot[value].a_id);
+    $(box_name).click(function(){
+    $( "#activity_info_dialog" ).empty();
+    $("#activity_info_dialog").append("標題"+"  "+hot[value].date+"</br>"+
+		  "出遊時間"+"   "+hot[value].date+"</br>"+
+		  "需求總數"+"    "+hot[value].amount+"</br>"+
+		  "簡介"+"    "+hot[value].introduction);
+      $( "#activity_info_dialog" ).dialog( "open" );
     });
+    $(box_name).css({"top":$(window).height()-60*(index+1)-5*(index)});
+    $(box_name).hover(function(){
+      $(box_name).finish();
+      $(box_name).css({opacity:1});
+    },function(){
+      $(box_name).css({opacity:0.7});
+      $(box_name).delay(3000);
+      $(box_name).animate({opacity:0}, 500);
+    });
+    $(box_name).delay(3000);
+    $(box_name).animate({opacity:0}, 500, function(){});
   i++;
-  }
+  });
 }
 
