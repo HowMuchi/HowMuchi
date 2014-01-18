@@ -182,12 +182,12 @@ $(function() {
 	url:'open_act.php', // CGI URL
 	success:function(data){
 	  loadContent();
-	  /*
+	 
 	  document.getElementById('change_name').value=data;
 	  $(document).ready(function() { 
 	    $('#myForm').submit();
 	  });
-	  */
+	  
 	},
 	error:function (xhr, ajaxOptions, thrownError) {
 	  alert(console.log(xhr));        
