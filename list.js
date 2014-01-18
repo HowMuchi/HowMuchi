@@ -224,7 +224,7 @@ function cancel_followed(a_id, request, u_id){
   data:{
 	a_id:a_id,
   	action:request,
-	u_id:$.cookie('iid');
+	u_id:$.cookie('id')
     },
   url:'delete_act.php',
   success:function(){
@@ -320,7 +320,8 @@ function display_content(data, fromwhere){
     }
     else{
       $('#delete_confirm').append('確定要刪除嗎?');
-      $('#delete_confirm').data('a_id', $(this).attr('name')).data('request', '2').dialog("open");
+      var temp = $(this).attr('name');
+      $('#delete_confirm').data('a_id', temp).data('request', '2').dialog("open");
     }
   });
   }
