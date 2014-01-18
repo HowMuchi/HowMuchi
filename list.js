@@ -249,7 +249,7 @@ function display_content(data, fromwhere){
   for(var i=1;i<hot.length;i++){
     $("#test"+hot[i].a_id).click(function(){
       if($.cookie('id') == null){
-	alert('please login!!!');
+	alert('請登入!!!');
       }
       else{
 	$( "#join_page" ).dialog( "open" );
@@ -266,7 +266,7 @@ function display_content(data, fromwhere){
 		$("#join_page").empty();
 		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
 		  "出遊時間"+"   "+hot[k].date+"</br>"+
-		  "需求總數"+"    "+hot[k].amount+"</br>"+
+		  "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
 		  "簡介"+"    "+hot[k].introduction);
 		$("#join_page").attr("name",join.a_id);
 	      }
