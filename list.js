@@ -169,6 +169,7 @@ function abc(category){
 
 $(document).ready(function(){
   get_follow_post();
+  get_host();
 });
 
 function get_follow_post(){
@@ -201,6 +202,42 @@ function get_follow_post(){
   }
 }
 
+function get_host(){
+  $.ajax({
+    data:{
+    u_id:$.cookie('id')
+    },
+    url:'get_host_list.php',
+    success:function(data){
+	alert(data);
+    },
+    error:function(xhr, ajaxOptions, throwError) {
+      alert(console.log(xhr));
+	  }
+  });
+
+}
+
+function cancel_followed(a_id, request, u_id){
+  $.ajax({
+  data:{
+	a_id:263,
+  	action:2,
+	u_id:1
+    },
+  url:'delete_act.php',
+  success:function(){
+    alert('delete success!!');
+  },
+  error:function(xhr, ajaxOptions, throwError){
+      alert(console.log(xhr));
+    }
+    });
+}
+
+//fromwhere
+//1: from category
+//0: from attended
 function display_content(data, fromwhere){
   var hot = JSON.parse(data); 
   var but;
@@ -209,8 +246,12 @@ function display_content(data, fromwhere){
   var id_name = new Array(1000);
   var test;
   var image;
-  var file_exist;
-  //$('.image').muImageResize({width: 150, height:150}); 
+  var message;
+  if(fromwhere == 1){
+    message = '我要參加';
+  }else{
+    message = '取消參加';
+  }
   while(i>0){
     if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
      file_exist = hot[i].a_id;
@@ -238,7 +279,7 @@ function display_content(data, fromwhere){
 	+'</p>'
 	+'</div>'
 	+'<div id="box_5_button">'
-	+'<button type="button" href="#" id=test'+ hot[i].a_id  +' class="orange" name=' + hot[i].a_id + '>我要參加</button>'
+	+'<button type="button" href="#" id=test'+ hot[i].a_id  +' class="orange" name=' + hot[i].a_id + '>'+message+'</button>'
 	+'</div>'
 	+'</div>'
 	+'</div>'
@@ -250,7 +291,7 @@ function display_content(data, fromwhere){
       if($.cookie('id') == null){
 	alert('please login!!!');
       }
-      else{
+      else if(fromwhere == 1){
 	$( "#join_page" ).dialog( "open" );
 	$.ajax({
 	  data:{
@@ -276,6 +317,10 @@ function display_content(data, fromwhere){
 	  }
 	}); 
     }
+    else{
+      $('#delete_confirm').append('確定要刪除嗎?');
+      $('#delete_confirm').data('a_id', $(this).attr('name')).data('request', '2').dialog("open");
+    }
   });
   }
 }
@@ -288,6 +333,31 @@ $(function() {
   modal:true,
   buttons: {
     "我知道了": function() {
+      $( this ).dialog( "close" );
+    }
+  },
+  position: {my:"center", at:"top", of:window },
+  show: {
+    duration: 300
+  },
+  hide: {
+    duration: 300
+  }
+  })
+});
+
+$(function() {
+  $( "#delete_confirm" ).dialog({
+    autoOpen: false,
+  height: 500,
+  width: 600,
+  modal:true,
+  buttons: {
+    "確定":function(){
+      cancel_followed($('#delete_confirm').data('a_id'), $('#delete_confirm').data('request'), $.cookie('id'));
+      $( this ).dialog( "close" );
+    },
+    "取消": function() {
       $( this ).dialog( "close" );
     }
   },
