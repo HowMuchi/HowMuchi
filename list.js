@@ -213,7 +213,7 @@ function get_host(){
 	alert(data);
     },
     error:function(xhr, ajaxOptions, throwError) {
-      alert(console.log(xhr));
+      alert(console);
 	  }
   });
 
