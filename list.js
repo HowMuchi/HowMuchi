@@ -221,19 +221,19 @@ function get_host(){
 
 function cancel_followed(a_id, request, u_id){
   $.ajax({
-  data:{
-	a_id:a_id,
-  	action:request,
-	u_id:$.cookie('iid');
+    data:{
+      a_id:a_id,
+  action:request,
+  u_id:$.cookie('id')
     },
   url:'delete_act.php',
   success:function(){
     alert('delete success!!');
   },
   error:function(xhr, ajaxOptions, throwError){
-      alert(console.log(xhr));
-    }
-    });
+    alert(console.log(xhr));
+  }
+  });
 }
 
 //fromwhere
@@ -255,9 +255,9 @@ function display_content(data, fromwhere){
   }
   while(i>0){
     if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
-     file_exist = hot[i].a_id;
-   else
-     file_exist = hot[i].category;
+      file_exist = hot[i].a_id;
+    else
+      file_exist = hot[i].category;
     id_name[i] = hot[i].a_id;
     $("#content_left").append(
 	'<div id = box_5>'
@@ -317,12 +317,12 @@ function display_content(data, fromwhere){
 	    alert(console.log(xhr));        
 	  }
 	}); 
-    }
-    else{
-      $('#delete_confirm').append('確定要刪除嗎?');
-      $('#delete_confirm').data('a_id', $(this).attr('name')).data('request', '2').dialog("open");
-    }
-  });
+      }
+      else{
+	$('#delete_confirm').append('確定要刪除嗎?');
+	$('#delete_confirm').data('a_id', $(this).attr('name')).data('request', '2').dialog("open");
+      }
+    });
   }
 }
 
@@ -350,25 +350,25 @@ $(function() {
 $(function() {
   $( "#delete_confirm" ).dialog({
     autoOpen: false,
-  height: 500,
-  width: 600,
-  modal:true,
-  buttons: {
-    "確定":function(){
-      cancel_followed($('#delete_confirm').data('a_id'), $('#delete_confirm').data('request'), $.cookie('id'));
-      $( this ).dialog( "close" );
-    },
+    height: 500,
+    width: 600,
+    modal:true,
+    buttons: {
+      "確定":function(){
+	cancel_followed($('#delete_confirm').data('a_id'), $('#delete_confirm').data('request'), $.cookie('id'));
+	$( this ).dialog( "close" );
+      },
     "取消": function() {
       $( this ).dialog( "close" );
     }
-  },
-  position: {my:"center", at:"top", of:window },
-  show: {
-    duration: 300
-  },
-  hide: {
-    duration: 300
-  }
+    },
+    position: {my:"center", at:"top", of:window },
+    show: {
+      duration: 300
+    },
+    hide: {
+      duration: 300
+    }
   })
 });
 
@@ -377,17 +377,17 @@ function display_reminder(data, newest){
   var i = 1;
   var hot = JSON.parse(data);
   $.each(newest, function(index, value){
-      var box_name = '#reminder_box_' + index;
+    var box_name = '#reminder_box_' + index;
     $('.reminder').css({"display":"block"});
     $('#reminder').append(
       '<div class=\'reminder_box\' id=\'reminder_box_'+index+'\'>'+hot[value].title+'</div>');
     $("#activity_info_dialog").attr("name",hot[value].a_id);
     $(box_name).click(function(){
-    $( "#activity_info_dialog" ).empty();
-    $("#activity_info_dialog").append("標題"+"  "+hot[value].title+"</br>"+
-		  "出遊時間"+"   "+hot[value].date+"</br>"+
-		  "需求總數"+"    "+hot[value].amount+"</br>"+
-		  "簡介"+"    "+hot[value].introduction);
+      $( "#activity_info_dialog" ).empty();
+      $("#activity_info_dialog").append("標題"+"  "+hot[value].title+"</br>"+
+	"出遊時間"+"   "+hot[value].date+"</br>"+
+	"需求總數"+"    "+hot[value].amount+"</br>"+
+	"簡介"+"    "+hot[value].introduction);
       $( "#activity_info_dialog" ).dialog( "open" );
     });
     $(box_name).css({"top":$(window).height()-60*(index+1)-5*(index)});
@@ -401,7 +401,7 @@ function display_reminder(data, newest){
     });
     $(box_name).delay(3000);
     $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
-  i++;
+    i++;
   });
 }
 
