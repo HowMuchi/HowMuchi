@@ -37,4 +37,5 @@ $u_id = $_REQUEST['u_id'];
    else{
    	echo "delete failed";
    }
+
 ?>
