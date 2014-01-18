@@ -288,7 +288,7 @@ $(function() {
   width: 600,
   modal:true,
   buttons: {
-    "我知道了": function() {
+    "朕知道了": function() {
       $( this ).dialog( "close" );
     }
   },
