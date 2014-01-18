@@ -28,6 +28,7 @@ $('#login').click(function(){
 	$('#member').css({"display":"none"});
 	$('#member_after').css({"display":"inline"});
 	get_follow_post();
+	loadContent();
       }
       else{
 	$('#sign_in_information').html(data);
@@ -69,6 +70,7 @@ $("#in").keypress(function(e){
 	    });
 	    $('#member').css({"display":"none"});
 	    $('#member_after').css({"display":"inline"});
+	    loadContent();
 	  }
 	  else{
 	    $('#sign_in_information').html(data);
@@ -112,6 +114,7 @@ $("#in_1").keypress(function(e){
 	    });
 	    $('#member').css({"display":"none"});
 	    $('#member_after').css({"display":"block"});
+	    loadContent();
 	  }
 	  else{
 	    $('#sign_in_information').html(data);
@@ -143,6 +146,7 @@ $('#menu_logout').click(function(){
   $.removeCookie('id');
   $('#member_after').css({"display":"none"});
   $('#member').css({"display":"block"});
+  loadContent();
 });
 
 $(function() {
@@ -156,6 +160,7 @@ $(function() {
 $('#home_page_btn').click(function(){
   $('#content').html();
 });
+
 
 $(function() {
   $( "#open_act_page" ).dialog({
@@ -176,13 +181,13 @@ $(function() {
 	  },
 	url:'open_act.php', // CGI URL
 	success:function(data){
-	  alert(data);
+	  loadContent();
+	  /*
 	  document.getElementById('change_name').value=data;
-	  alert(document.getElementById('change_name').value);
 	  $(document).ready(function() { 
 	    $('#myForm').submit();
 	  });
-	  location.reload(true);
+	  */
 	},
 	error:function (xhr, ajaxOptions, thrownError) {
 	  alert(console.log(xhr));        
@@ -285,7 +290,7 @@ $(function() {
 	},
       url:'attending_list.php', // CGI URL
       success:function(data){
-	var state=JSON.parse(data);
+	loadContent();
       }
       });
       $( this ).dialog( "close" );
@@ -429,18 +434,25 @@ function IsFileExist(filePath){
   return bo;
 }
 
-$(function(){
-  $.ajax({
-    data:{
-      // u_id: $.cookie('id')
-    },
-    url:'get_act.php', // CGI URL
-    success:function(data){
-      //     alert(data);
-    }
-  });
-});
-$.get('get_act.php',function(data){
+function MyImage(img){
+  img.width = 360;
+  img.height = 219;
+}
+
+function loadContent(){
+  var user_id
+  if($.cookie('id')==null){
+    user_id = '';
+  }
+  else{
+    user_id = $.cookie('id');
+  }
+$.ajax({
+  data:{
+    u_id: user_id
+  },
+url:'get_act.php', // CGI URL
+success:function(data){
   var hot = JSON.parse(data); 
   var but;
   var button_name;
@@ -450,11 +462,14 @@ $.get('get_act.php',function(data){
   var image;
   var file_exist;
   //$('.image').muImageResize({width: 150, height:150}); 
-  while(i>0){
+  $("#content_left").html('');
+  while(i>-1){
     if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
-     file_exist = hot[i].a_id;
-   else
-     file_exist = hot[i].category;
+  file_exist = hot[i].a_id;
+    else
+  file_exist = hot[i].category;
+
+    //MyImage("image2/" + file_exist + ".jpg");
     id_name[i] = hot[i].a_id;
     $("#content_left").append(
 	'<div id = box_5>'
@@ -472,8 +487,9 @@ $.get('get_act.php',function(data){
 	+hot[i].date 
 	+'</br>'
 	+'<a id="money">人數:</a>'
-	+hot[i].amount
+	+'  '
 	+'/'
+	+hot[i].amount
 	+'</p>'
 	+'</div>'
 	+'<div id="box_5_button">'
@@ -503,9 +519,9 @@ $.get('get_act.php',function(data){
 	      if(join.a_id==hot[k].a_id) {
 		$("#join_page").empty();
 		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
-		  "出遊時間"+"   "+hot[k].date+"</br>"+
-		  "需求總數"+"    "+hot[k].amount+"</br>"+
-		  "簡介"+"    "+hot[k].introduction);
+		  "出遊時間:"+"   "+hot[k].date+"</br>"+
+		  "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
+		  "簡介:"+"    "+hot[k].introduction);
 		$("#join_page").attr("name",join.a_id);
 	      }
 	    }
@@ -548,6 +564,11 @@ $.get('get_act.php',function(data){
     });
 
   }
+
+}
 });
 
-
+}
+$(function(){
+	loadContent();
+});

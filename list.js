@@ -98,6 +98,7 @@ $('#list_buy').click(
 
 $('#user_followed').click(function(){
   abc(-1);
+  $('html,body').scrollTop(0);
 });  
 
 function abc(category){
@@ -274,8 +275,8 @@ function display_content(data, fromwhere){
 	+hot[i].date 
 	+'</br>'
 	+'<a id="money">人數:</a>'
-	+hot[i].amount
 	+'/'
+	+hot[i].amount
 	+'</p>'
 	+'</div>'
 	+'<div id="box_5_button">'
@@ -289,7 +290,7 @@ function display_content(data, fromwhere){
   for(var i=1;i<hot.length;i++){
     $("#test"+hot[i].a_id).click(function(){
       if($.cookie('id') == null){
-	alert('please login!!!');
+	alert('請登入!!!');
       }
       else if(fromwhere == 1){
 	$( "#join_page" ).dialog( "open" );
@@ -306,7 +307,7 @@ function display_content(data, fromwhere){
 		$("#join_page").empty();
 		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
 		  "出遊時間"+"   "+hot[k].date+"</br>"+
-		  "需求總數"+"    "+hot[k].amount+"</br>"+
+		  "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
 		  "簡介"+"    "+hot[k].introduction);
 		$("#join_page").attr("name",join.a_id);
 	      }
@@ -332,7 +333,7 @@ $(function() {
   width: 600,
   modal:true,
   buttons: {
-    "我知道了": function() {
+    "朕知道了": function() {
       $( this ).dialog( "close" );
     }
   },

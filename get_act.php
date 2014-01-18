@@ -9,10 +9,14 @@ $conn = mysql_connect($db_host, $db_user, $db_pwd) or die('Error with MySQL conn
 mysql_query("SET NAMES utf8;", $conn);
 mysql_select_db($db_name)or die(mysql_error());
 
-$query ="SELECT * FROM  `5_activity` ";
+$cur_user = $_REQUEST['u_id'];
+if($cur_user != '')
+	$query ="select * from 5_activity where a_id not in (select a_id from 5_follow where f_id = '$cur_user' or if_host = '$cur_user')";
+else{
+	$query = "select * from 5_activity";
+}
 $result =mysql_query($query);
 
-$cur_user = $_REQUEST['u_id'];
 $mysql_query = "SELECT a_id from 5_follow where f_id='$u_id'";
 
 $condition_result = mysql_query($mysql_query);

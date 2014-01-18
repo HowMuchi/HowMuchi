@@ -76,7 +76,7 @@
 	      <div class="staff"><img src="Me.jpg">凌偉誠</img></div>
 		</div>
 	      </div>
-	    </div>
+      </div>
       <div id='content_right'>
 	<ul id='user_information'>
 	  <li>取消跟團</li>
@@ -92,6 +92,8 @@
     <!--Content of Dialog-->
 
     <div id="join_page" title="參加活動" name="123">
+    </div>
+    <div id="activity_info_dialog" title="詳細資訊" name="456">
     </div>
     <div id="open_act_page" title="Open Activities">
       <p>
@@ -118,18 +120,18 @@
       <textarea rows="5" cols="50" name='introduction' placeholder="Describe your schedule!!"></textarea>
     </div>
 
-    <div id="sign_up_dialog" title="Create new user">
+    <div id="sign_up_dialog" title="註冊新帳號">
 
-      <p id="sign_up_tips" 	class="validateTips">All form fields are required.</p>
+      <p id="sign_up_tips" 	class="validateTips">以下資訊為必填</p>
       <form>
 	<fieldset>
-	  <label for="account">Account</label>
+	  <label for="account">帳號</label>
 	  <input type="text" id="SUaccount" value="" class="text ui-widget-content ui-corner-all">
-	  <label for="password">Password</label>
+	  <label for="password">密碼</label>
 	  <input type="password" id="SUpassword" value="" class="text ui-widget-content ui-corner-all">
 	  <label for="email">Email</label>
 	  <input type="text" id="email"  value="" class="text ui-widget-content ui-corner-all">
-	  <label for="name">Name</label>
+	  <label for="name">姓名</label>
 	  <input type="text" id="name" class="text ui-widget-content ui-corner-all">
 	  <p id='signUp_info'><p>
 	</fieldset>
@@ -144,7 +146,7 @@
 <!--script type='text/javascript' src="jquery.js"></script-->	
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="jquery-latest.js"></script>
-<script type='text/javascript' src="hot.js"></script> 
+<script type='text/javascript' src="UserInfoScroll.js"></script> 
 <script type='text/javascript' src="show.js"></script>
 <script type='text/javascript' src="list.js"></script>
 <script type="text/javascript" src="image_ani.js" ></script>
