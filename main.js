@@ -472,8 +472,9 @@ $.get('get_act.php',function(data){
 	+hot[i].date 
 	+'</br>'
 	+'<a id="money">人數:</a>'
-	+hot[i].amount
+	+'  '
 	+'/'
+	+hot[i].amount
 	+'</p>'
 	+'</div>'
 	+'<div id="box_5_button">'
@@ -503,9 +504,9 @@ $.get('get_act.php',function(data){
 	      if(join.a_id==hot[k].a_id) {
 		$("#join_page").empty();
 		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
-		  "出遊時間"+"   "+hot[k].date+"</br>"+
-		  "需求總數"+"    "+hot[k].amount+"</br>"+
-		  "簡介"+"    "+hot[k].introduction);
+		  "出遊時間:"+"   "+hot[k].date+"</br>"+
+		  "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
+		  "簡介:"+"    "+hot[k].introduction);
 		$("#join_page").attr("name",join.a_id);
 	      }
 	    }

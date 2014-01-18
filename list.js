@@ -234,8 +234,8 @@ function display_content(data, fromwhere){
 	+hot[i].date 
 	+'</br>'
 	+'<a id="money">¤H¼Æ:</a>'
-	+hot[i].amount
 	+'/'
+	+hot[i].amount
 	+'</p>'
 	+'</div>'
 	+'<div id="box_5_button">'
