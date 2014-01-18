@@ -288,7 +288,7 @@ $(function() {
 	},
       url:'attending_list.php', // CGI URL
       success:function(data){
-	var state=JSON.parse(data);
+	loadContent();
       }
       });
       $( this ).dialog( "close" );
