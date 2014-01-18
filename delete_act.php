@@ -23,8 +23,9 @@ $u_id = $_REQUEST['u_id']
     echo "Activity deleted";
   }
   else if($request==2){			//cancel attending activity
-    $sql3 = "delete from 5_activity where a_id='$a_id' AND f_id='$u_id'";
+    $sql3 = "delete from 5_follow where a_id='$a_id' AND f_id='$u_id'";
     mysql_query($sql3);
+    echo "activity canceled";
   }
 
 ?>
