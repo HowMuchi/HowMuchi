@@ -98,6 +98,7 @@ $('#list_buy').click(
 
 $('#user_followed').click(function(){
   abc(-1);
+  $('html,body').scrollTop(0);
 });  
 
 function abc(category){
