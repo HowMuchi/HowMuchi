@@ -229,6 +229,7 @@ function cancel_followed(a_id, request, u_id){
   url:'delete_act.php',
   success:function(){
     alert('delete success!!');
+    abc(-1);
   },
   error:function(xhr, ajaxOptions, throwError){
     alert(console.log(xhr));
@@ -248,6 +249,7 @@ function display_content(data, fromwhere){
   var test;
   var image;
   var message;
+  $("#content_left").html('');
   if(fromwhere == 1){
     message = '我要參加';
   }else{
