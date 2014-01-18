@@ -222,9 +222,9 @@ function get_host(){
 function cancel_followed(a_id, request, u_id){
   $.ajax({
   data:{
-	a_id:263,
-  	action:2,
-	u_id:1
+	a_id:a_id,
+  	action:request,
+	u_id:$.cookie('iid');
     },
   url:'delete_act.php',
   success:function(){
