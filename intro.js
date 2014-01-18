@@ -1,4 +1,3 @@
-
 $('#logo').mouseover(function(){
 
   $(this).addClass('animated shake');
@@ -28,6 +27,7 @@ $('#login').click(function(){
 	});
 	$('#member').css({"display":"none"});
 	$('#member_after').css({"display":"inline"});
+	get_follow_post();
       }
       else{
 	$('#sign_in_information').html(data);
@@ -92,7 +92,7 @@ $("#in").keypress(function(e){
 $("#in_1").keypress(function(e){
   if(e.which == 13){
     if($("#in").val() == ""){
-      alert("Account is required!!");
+      alert("未填寫帳號");
     }
     else{
       $.ajax({
@@ -220,7 +220,7 @@ function create_act(){
   }
   else{
     $('#sign_up_dialog').dialog("open");
-    $('#sign_up_tips').html('Please sign!!');
+    $('#sign_up_tips').html('請登入!!');
   }
 };
 
@@ -278,21 +278,14 @@ $(function() {
   modal:true,
   buttons: {
     "參加": function() {
-      /*$('.monkey_2').show();*/
       $.ajax({
 	data:{
 	  a_id:$(this).attr('name'),
-      /*a_id:$(".test10").attr('value'),*/
       u_id:$.cookie('id')
 	},
       url:'attending_list.php', // CGI URL
       success:function(data){
 	var state=JSON.parse(data);
-	if((state.atd_status)){
-	  $('.monkey_'+state.a_id).show();
-	}
-	$('#test'+state.a_id).hide();
-	$('#discard'+state.a_id).show();
       }
       });
       $( this ).dialog( "close" );
@@ -331,13 +324,13 @@ $( "#sign_up_dialog" ).dialog({
 	});
       }
       else{
-	$('#signUp_info').html("it's too short");
+	$('#signUp_info').html("帳號過短");
       }
     //    jQuery('#signUp_info').html("<img src='ajax-loader.gif'>");
     }); 
   },
   buttons: {
-    "Create an account": function() {
+    "創立帳號": function() {
       var bValid = true;
       allFields.removeClass( "ui-state-error" );
 
@@ -362,7 +355,7 @@ $( "#sign_up_dialog" ).dialog({
 	  },
 	  url:'signUp.cgi', // CGI URL
 	  success:function(data){
-	    alert('sign Up success');
+	    alert('創立帳號成功');
 	  },
 	  error:function (xhr, ajaxOptions, thrownError) {
 	    alert(console.log(xhr));        
@@ -371,7 +364,7 @@ $( "#sign_up_dialog" ).dialog({
 	$( this ).dialog( "close" );
       }
     },
-    Cancel: function() {
+    "取消": function() {
       $( this ).dialog( "close" );
     }
   },
@@ -476,9 +469,9 @@ $.get('get_act.php',function(data){
 	      if(join.a_id==hot[k].a_id) {
 		$("#join_page").empty();
 		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
-		  "出遊時間"+"   "+hot[k].date+"</br>"+
-		  "需求總數"+"    "+hot[k].amount+"</br>"+
-		  "簡介"+"    "+hot[k].introduction);
+		  "出遊時間:"+"   "+hot[k].date+"</br>"+
+		  "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
+		  "簡介:"+"    "+hot[k].introduction);
 		$("#join_page").attr("name",join.a_id);
 	      }
 	    }
