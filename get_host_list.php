@@ -5,20 +5,25 @@
     $db_user = 'nckucampus';
     $db_pwd = 'yoman';
     $db_name = 'nckucampus';
-    mysql_connect($db_host, $db_user, $db_pwd) or die('Error with MySQL connection');
-    mysql_query("SET NAMES utf8", $conn);
+    $conn = mysql_connect($db_host, $db_user, $db_pwd) or die('Error with MySQL connection');
+    mysql_query("SET NAMES utf8;", $conn);
     mysql_select_db($db_name)or die(mysql_error());
     
     $u_id=$_REQUEST['u_id'];
     
-    $query = "SELECT a_id from 5_follow where f_id='$u_id' and if_host=1";
-    $result = mysql_query($query);
-    $rows = array();
+    $query = "SELECT * from 5_activity where h_id='$u_id'";
+    $result = mysql_query($query)or die(mysql_error());
+    $return_arr = array();
     while($data=mysql_fetch_array($result)){
-        //echo $data['a_id'];
-        $rows[] = $data['a_id'];
+      $row_array['a_id']=$data['a_id'];
+      $row_array['title']=urlencode($data['title']);
+      $row_array['h_id']=$data['h_id'];
+      $row_array['category']=$data['category'];
+      $row_array['amount']=$data['amount'];
+      $row_array['date']=$data['date'];
+      $row_array['introduction']=urlencode($data['introduction']);
+      array_push($return_arr,$row_array);
     }
-    $result_final=json_encode($rows);
-    echo $result_final;
-    ?>
+    echo urldecode(json_encode($return_arr));
+?>
 ~
