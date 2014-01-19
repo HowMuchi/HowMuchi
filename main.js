@@ -559,7 +559,7 @@ success:function(data){
 	);
     i--;
   }
-  for(var i=1;i<hot.length;i++){
+  for(var i=0;i<hot.length;i++){
     $("#test"+hot[i].a_id).click(function(){
       if($.cookie('id') == null){
 	alert('請登入!!!');
@@ -574,7 +574,7 @@ success:function(data){
 	  url:'attending_list.php', // CGI URL
 	  success:function(data){
 	    var join=JSON.parse(data);
-	    for(var k=1;k<hot.length;k++){
+	    for(var k=0;k<hot.length;k++){
 	      if(join.a_id==hot[k].a_id) {
 		$("#join_page").empty();
 		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+

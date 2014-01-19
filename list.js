@@ -348,7 +348,7 @@ function display_content(data, fromwhere){
 	  url:'attending_list.php', // CGI URL
 	  success:function(data){
 	    var join=JSON.parse(data);
-	    for(var k=1;k<hot.length;k++){
+	    for(var k=0;k<hot.length;k++){
 	      if(join.a_id==hot[k].a_id) {
 		$("#join_page").empty();
 		$("#join_page").append("¼ÐÃD"+"  "+hot[k].title+"</br>"+
@@ -449,10 +449,10 @@ function display_reminder(data, newest){
     },function(){
       $(box_name).css({opacity:0.7});
       $(box_name).delay(3000);
-      $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
+      //$(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
     });
     $(box_name).delay(3000);
-    $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
+    //$(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
     i++;
   });
 }
