@@ -105,21 +105,34 @@ $('#user_followed').click(function(){
 $('#user_created').click(function(){
   abc(-2);
   $('html,body').scrollTop(0);
-  FollowOrHost(1);
+  FollowOrHost(2);
 });
 
 function FollowOrHost(state){
 	if(state == 1){
-	  	//change  user_followed to red
+	  	//change  user_followed to dark red
 		$('#user_followed').css({"background-color":"rgba(148,38,38,0.61)",});
-		//change user_created to blue
+		//change user_created to default
 		$('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
+		//change user_followed to default
+		$('#recent_act').css({"background-color":"rgba(216,104,122,0.61)",});
 	}
 	else if(state == 2){
-	  	//change user_created to red
-		$('#user_created').css({"background-color":"rgba(148,38,38,0.61)",});
-		//change user_followed to blue
+		//change user_followed to default
 		$('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
+	  	//change user_created to dark red
+		$('#user_created').css({"background-color":"rgba(148,38,38,0.61)",});
+		//change user_followed to default
+		$('#recent_act').css({"background-color":"rgba(216,104,122,0.61)",});
+	}
+	else if(state ==3){
+		//change user_followed to default
+		$('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
+		//change user_followed to default
+		$('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
+	  	//change user_created to dark red
+		$('#recent_act').css({"background-color":"rgba(148,38,38,0.61)",});
+	
 	}
 }
 
