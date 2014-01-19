@@ -99,7 +99,15 @@ $('#list_buy').click(
 $('#user_followed').click(function(){
   abc(-1);
   $('html,body').scrollTop(0);
-});  
+  FollowOrHost(1);
+}); 
+
+function FollowOrHost(state){
+	if(state == 1){
+		$('#user_followed').css({"background-color":"rgba(58,124,196,0.61)",});
+		alert("Change");
+	}
+}
 
 function abc(category){
   if(category > 0){	
@@ -254,6 +262,9 @@ function display_content(data, fromwhere){
     message = '我要參加';
   }else{
     message = '取消參加';
+  }
+  if(fromwhere == 0){
+  	$("#content_left").html('AloHA</br>');
   }
   while(i>0){
     if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
