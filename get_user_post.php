@@ -8,7 +8,7 @@ mysql_query("SET NAMES utf8;", $conn);
 mysql_select_db($db_name)or die(mysql_error());
 $u_id = $_REQUEST['u_id'];
 
-$mysql_query = "SELECT * from 5_follow,5_activity where f_id='$u_id' and 5_follow.a_id=5_activity.a_id";
+$mysql_query = "SELECT * from 5_follow,5_activity where f_id='$u_id' and if_host != 1 and 5_follow.a_id=5_activity.a_id";
 
 $result = mysql_query($mysql_query);
 
