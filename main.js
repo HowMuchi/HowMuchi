@@ -474,6 +474,24 @@ function MyImage(img){
   img.width = 360;
   img.height = 219;
 }
+$("#about_us").click(function(){
+  $("#content_left").html('');
+  $("#content_left").append(
+	    '<div class="text">'+
+	    '<h3>大家都是好麻吉 一起玩樂 一起吃喝</h3>'+
+	    '</br>'+
+	    '<h3>關於我們</h3>'+
+	    '<hr></hr>'+
+	    ' <div class="wrap">'+
+	     ' <div class="staff">'+'<img src="wei.jpg">黃哲緯</img>'+'</div>'+
+	      '<div class="staff">'+'<img src="min.jpg">沈士閔</img>'+'</div>'+
+	      '<div class="staff">'+'<img src="pei.jpg">謝佩璇</img>'+'</div>'+
+	      '<div class="staff">'+'<img src="yo.jpg">陳宥任</img>'+'</div>'+
+	      '<div class="staff">'+'<img src="Me.jpg">凌偉誠</img>'+'</div>'+
+		'</div>'+
+	     ' </div>'
+	      );
+});
 
 function loadContent(){
   var user_id
@@ -508,8 +526,8 @@ success:function(data){
     //MyImage("image2/" + file_exist + ".jpg");
     id_name[i] = hot[i].a_id;
     $("#content_left").append(
-	'<div id = box_5>'
-	+'<div id=box_5_title >'
+	'<div id = "box_5">'
+	+'<div id="box_5_title" >'
 	+'<p>'+ hot[i].title + '</p>'
 	+'</div>'
 	+'<div id="box_5_content">'

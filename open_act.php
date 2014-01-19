@@ -18,13 +18,14 @@ $introduction = $_REQUEST['introduction'];
 $mysql = "insert into 5_activity (category,h_id,title,amount,date,introduction) values ($category,'$h_id','$title','$amount','$date','$introduction')"; 
 if (!$queryResource = mysql_query($mysql))                                                                                      
   die (mysql_error());
-//echo $title."</br>".$amount."</br>".$date;
-//    echo $category."\n".$h_id."\n".$title."\n".$amount."\n".$date."\n";
-//	echo $category;
 $return_aid_query = "SELECT MAX(a_id) from 5_activity";
 $result = mysql_query($return_aid_query);
+$cur_aid;
 while($data=mysql_fetch_array($result)){
+  $cur_aid=$data[0];
   echo $data[0];
 }
+$mysql2 = "insert into 5_follow (a_id,f_id,if_host) values ($cur_aid,$h_id,1)";
+mysql_query($mysql2);
 
 ?>
