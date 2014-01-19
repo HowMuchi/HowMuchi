@@ -511,6 +511,7 @@ $.ajax({
   },
 url:'get_act.php', // CGI URL
 success:function(data){
+  alert(data);
   var hot = JSON.parse(data); 
   var but;
   var button_name;

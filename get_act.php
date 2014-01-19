@@ -11,7 +11,7 @@ mysql_select_db($db_name)or die(mysql_error());
 
 $cur_user = $_REQUEST['u_id'];
 if($cur_user != '')
-	$query ="select * from 5_activity where a_id not in (select a_id from 5_follow where f_id = '$cur_user'";
+	$query ="select * from 5_activity where a_id not in (select a_id from 5_follow where f_id = $cur_user)";
 else{
 	$query = "select * from 5_activity";
 }
