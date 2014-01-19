@@ -36,7 +36,7 @@ $result_final=json_encode($rows);
     
     $u_id=$_REQUEST['u_id'];
     
-    $query = "SELECT * from 5_activity,5_follow where h_id='$u_id and if_host=1'";
+    $query = "SELECT * from 5_activity where h_id='$u_id'";
     $result = mysql_query($query)or die(mysql_error());
     $return_arr = array();
     while($data=mysql_fetch_array($result)){
