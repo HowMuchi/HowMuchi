@@ -13,9 +13,13 @@ $u_id=$_REQUEST['u_id'];
 
 $query = "SELECT a_id from 5_follow where f_id='$u_id' and if_host=1";
 $result = mysql_query($query);
+$rows = array();
 while($data=mysql_fetch_array($result)){
-	echo $data['a_id'];
+	//echo $data['a_id'];
+	$rows[] = $data['a_id'];
 }
+$result_final=json_encode($rows);
+    echo $result_final;
 
     //get_host_open_activity
     
