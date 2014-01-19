@@ -1,7 +1,6 @@
 <?php
 //get_host_open_activity
 
-<<<<<<< HEAD
 /*$db_host = 'merry.ee.ncku.edu.tw';
 $db_user = 'nckucampus';
 $db_pwd = 'yoman';
@@ -24,8 +23,6 @@ $result_final=json_encode($rows);
  */
     //get_host_open_activity
     
-=======
->>>>>>> d77f2ac542a3174368e36b82c5fafb771415e88e
     $db_host = 'merry.ee.ncku.edu.tw';
     $db_user = 'nckucampus';
     $db_pwd = 'yoman';
