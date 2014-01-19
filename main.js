@@ -193,7 +193,6 @@ $(function() {
 	  $(document).ready(function() { 
 	    $('#myForm').submit();
 	  });
-	  
 	},
 	error:function (xhr, ajaxOptions, thrownError) {
 	  alert(console.log(xhr));        
@@ -515,7 +514,7 @@ success:function(data){
 	+'</div>'
 	+'<div id="box_5_content">'
 	+'<div id="box_5_image" >'
-	+'<img src="image2/'+file_exist+'.jpg">'
+	+'<img src="image2/'+file_exist+'.jpg" onload="javascript:MyImage(this);" border="0">'
 	+'</div>'
 	+'<div id="box_5_text">'
 	+'<div id="box_5_info">'
