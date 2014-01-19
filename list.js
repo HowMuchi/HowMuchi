@@ -211,7 +211,9 @@ function abc(category){
   //show all activity
   else if(category == 0){
     $.ajax({
-      data:{},
+      data:{
+      	u_id: $.cookie('id')
+      },
       url:'get_act.php', // CGI URL
       success:function(data){
 	content_fadeInOut(data, 1);

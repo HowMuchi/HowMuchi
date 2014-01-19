@@ -47,7 +47,6 @@ if($attend_size < $attend_wanted_num)
     //die (mysql_error());
     $mysql = "insert into 5_follow(a_id , f_id,if_host) values ('$a_id', '$f_id',0)";
     mysql_query($mysql);
-    echo "attend success";
     $atd_status=1;
  // }
 }
