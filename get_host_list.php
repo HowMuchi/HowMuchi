@@ -8,9 +8,6 @@ $db_name = 'nckucampus';
 mysql_connect($db_host, $db_user, $db_pwd) or die('Error with MySQL connection');
 mysql_query("SET NAMES utf8;", $conn);
 mysql_select_db($db_name)or die(mysql_error());
-if (!$attend_data = mysql_query($attend_ct_query, $conn)){
-    die (mysql_error());
-}
 
 $u_id=$_REQUEST['u_id'];
 
