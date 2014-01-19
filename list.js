@@ -99,7 +99,23 @@ $('#list_buy').click(
 $('#user_followed').click(function(){
   abc(-1);
   $('html,body').scrollTop(0);
-});  
+  FollowOrHost(1);
+}); 
+
+function FollowOrHost(state){
+	if(state == 1){
+	  	//change  user_followed to red
+		$('#user_followed').css({"background-color":"rgba(148,38,38,0.61)",});
+		//change user_created to blue
+		$('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
+	}
+	else if(state == 2){
+	  	//change user_created to red
+		$('#user_created').css({"background-color":"rgba(148,38,38,0.61)",});
+		//change user_followed to blue
+		$('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
+	}
+}
 
 function abc(category){
   if(category > 0){	

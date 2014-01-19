@@ -214,13 +214,12 @@ body{
   /*background-size:1280px 1700px;*/
   /*background-size:cover;*/
   display:block;
-  margin:8px;
-
+  margin:0;
 }
 
 #content{
   /* left:245px;*/
-  width:72%;
+  width:70%;
   height:100%;
   /*background-color:#63add0;*/
   margin-top:30px;
@@ -248,7 +247,7 @@ body{
   margin-top:20px;
   padding-top:10px;
   padding-bottom:10px;
-  background-color:rgba(160,62,7,0.61);
+  background-color:rgba(216,104,122,0.61);
   color: white;
   -webkit-border-radius:8px;
   border-radius:8px;
@@ -258,8 +257,8 @@ body{
 
 }
 #content_right #user_information li:hover{
-  -webkit-transform:translate(3em,0);
-  transform:translate(3em,0);
+  -webkit-transform:translate(1em,0);
+  transform:translate(1em,0);
 }
 .orange{
   float:right;	
