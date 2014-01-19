@@ -1,7 +1,7 @@
 <?php
 //get_host_open_activity
 
-$db_host = 'merry.ee.ncku.edu.tw';
+/*$db_host = 'merry.ee.ncku.edu.tw';
 $db_user = 'nckucampus';
 $db_pwd = 'yoman';
 $db_name = 'nckucampus';
@@ -20,10 +20,10 @@ while($data=mysql_fetch_array($result)){
 }
 $result_final=json_encode($rows);
     echo $result_final;
-
+ */
     //get_host_open_activity
     
-/*    $db_host = 'merry.ee.ncku.edu.tw';
+    $db_host = 'merry.ee.ncku.edu.tw';
     $db_user = 'nckucampus';
     $db_pwd = 'yoman';
     $db_name = 'nckucampus';
@@ -33,7 +33,7 @@ $result_final=json_encode($rows);
     
     $u_id=$_REQUEST['u_id'];
     
-    $query = "SELECT * from 5_activity where h_id='$u_id'";
+    $query = "SELECT * from 5_activity,5_follow where h_id='$u_id and if_host=1'";
     $result = mysql_query($query)or die(mysql_error());
     $return_arr = array();
     while($data=mysql_fetch_array($result)){
@@ -46,6 +46,6 @@ $result_final=json_encode($rows);
       $row_array['introduction']=urlencode($data['introduction']);
       array_push($return_arr,$row_array);
     }
-    echo urldecode(json_encode($return_arr));*/
+    echo urldecode(json_encode($return_arr));
 ?>
-~
+
