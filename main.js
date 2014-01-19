@@ -213,16 +213,6 @@ $(function() {
     }
   }
   );
-  $( "#create_act_btn" ).click(function() {
-    alert('12345');
-    /*if($.cookie('name') != null) {
-      $( "#open_act_page" ).dialog( "open" );
-      }
-      else{
-      $('#sign_up_dialog').dialog("open");
-      $('#sign_up_tips').html('Please sign!!');}*/
-  });
-});
 
 function create_act(){
   if($.cookie('name') != null) {
@@ -334,7 +324,7 @@ $(function() {
 	},
       url:'attending_list.php', // CGI URL
       success:function(data){
-	alert(data);
+	//alert(data);
 	loadContent();
       }
       });
@@ -618,36 +608,6 @@ function loadContent(){
 	    }
 	  }); 
 	}
-      });
-      /*discard button*/
-      $("#discard"+hot[i].a_id).click(function(){
-	if($.cookie('id')== null){
-	  alert("½Ðµn¤J!!");
-	}
-	else{
-	  alert("Fuck U");
-	  $.ajax({
-	    data:{
-	      a_id:$(this).attr('name'),
-	    u_id:$.cookie('id')
-	    },
-	    url:'get_specific_activity_datat.php', // CGI URL
-	    success:function(data){
-	      var join=JSON.parse(data);
-	      for(var k=1;k<hot.length;k++){
-		if(join.a_id==hot[k].a_id) {
-		  $('#discard'+join.a_id).hide();
-		  $('#test'+join.a_id).show();
-		}
-	      }
-	    },
-	    error:function (xhr, ajaxOptions, thrownError) {
-	      alert(console.log(xhr));        
-	    }
-	  }); 
-	  alert("Aloha");
-	}
-
       });
 
     }
