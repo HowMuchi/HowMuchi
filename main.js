@@ -535,7 +535,8 @@ success:function(data){
     //MyImage("image2/" + file_exist + ".jpg");
     id_name[i] = hot[i].a_id;
     $("#content_left").append(
-	'<div id = "box_5">'
+	'<div id = "box_5" class="act'
+	+hot[i].a_id+'">'
 	+'<div id="box_5_title" >'
 	+'<p>'+ hot[i].title + '</p>'
 	+'</div>'
