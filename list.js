@@ -226,13 +226,10 @@ function content_fadeInOut(data, type){
 
 $(document).ready(function(){
   get_follow_post();
-  get_host();
 });
 
 function get_follow_post(){
   if($.cookie('id') != undefined){
-    //alert($.cookie('id'));
-    //$('#reminder').css({"top":$(window).height()-$('#reminder').height()});
     $.ajax({
       data:{
 	u_id:$.cookie('id')
@@ -244,9 +241,8 @@ function get_follow_post(){
 	var newest = [];
 	var cur_time = new Date();
 	while(i < hot.length){
-	  //time += hot[i].date + ',\n';
 	  var time = new Date(hot[i].date) ;
-	  if((time - cur_time) > 0)
+	  if((time - cur_time) / 86400000 < 3.00 && (time - cur_time) > 0)
       newest.push(i);
     i++;
 	}
@@ -259,20 +255,6 @@ function get_follow_post(){
   }
 }
 
-function get_host(){
-  $.ajax({
-    data:{
-      u_id:$.cookie('id')
-    },
-  url:'get_host_list.php',
-  success:function(data){
-  },
-  error:function(xhr, ajaxOptions, throwError) {
-    alert(console.log(xhr));
-  }
-  });
-
-}
 
 function cancel_followed(a_id, request, u_id){
   $.ajax({
@@ -374,7 +356,7 @@ function display_content(data, fromwhere){
 		  "¥Ø«e±¡ªp:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
 		  "Â²¤¶"+"    "+hot[k].introduction);
 		$("#join_page").attr("name",join.a_id);
-	      }
+	     }
 	    }
 	  },
 	  error:function (xhr, ajaxOptions, thrownError) {
