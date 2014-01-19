@@ -18,7 +18,7 @@ $ref = $selectRecord->fetchrow_hashref();
 print "Content-type: text/html\n\n"; # HTTP header
 print "\'$account\'";
 if($ref){
-	print " is uesd";
+	print " is used!!!";
       }
 else{
 	print " is OK!!!";

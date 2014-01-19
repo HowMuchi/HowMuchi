@@ -576,6 +576,7 @@ function loadContent(){
 	  +hot[i].now_amount
 	  +'/'
 	  +hot[i].amount
+	  +'人'
 	  +'</p>'
 	  +'</div>'
 	  +'<div id="box_5_button">'
@@ -606,7 +607,7 @@ function loadContent(){
 		  $("#join_page").empty();
 		  $("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
 		    "出遊時間:"+"   "+hot[k].date+"</br>"+
-		    "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
+		    "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"人"+"</br>"+
 		    "簡介:"+"    "+hot[k].introduction);
 		  $("#join_page").attr("name",join.a_id);
 		}

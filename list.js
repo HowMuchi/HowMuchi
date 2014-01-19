@@ -80,20 +80,24 @@ $('#list_buy').hover(
 $('#list_all').click(
     function(){
       abc(0);
+      FollowOrHost(4);
     });
 
 $('#list_food').click(
     function(){
       abc(2);
+      FollowOrHost(4);
     });
 
 $('#list_travel').click(
     function(){
       abc(1);
+      FollowOrHost(4);
     });
 $('#list_buy').click(
     function(){
       abc(3);
+      FollowOrHost(4);
     });
 
 $('#user_followed').click(function(){
@@ -102,7 +106,7 @@ $('#user_followed').click(function(){
   FollowOrHost(1);
   }
   else
-  alert('Please login!!');
+  alert('請登入!!');
 }); 
 
 $('#user_created').click(function(){
@@ -111,7 +115,7 @@ $('#user_created').click(function(){
   FollowOrHost(2);
   }
   else
-  alert('Please login!!');
+  alert('請登入!!');
 });
 
 $('#recent_act').click(function(){
@@ -132,7 +136,7 @@ $('#recent_act').click(function(){
   });
   }
   else
-  alert('Please login!!');
+  alert('請登入!!');
 });
 function FollowOrHost(state){
   $('html,body').scrollTop(0);
@@ -159,7 +163,14 @@ function FollowOrHost(state){
     $('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
     //change user_created to dark red
     $('#recent_act').css({"background-color":"rgba(148,38,38,0.61)",});
-
+  }
+  else if(state ==4){
+    //change user_followed to default
+    $('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
+    //change user_followed to default
+    $('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
+    //change user_followed to default
+    $('#recent_act').css({"background-color":"rgba(216,104,122,0.61)",});
   }
 }
 
@@ -279,7 +290,7 @@ function cancel_followed(a_id, request, u_id){
     },
   url:'delete_act.php',
   success:function(){
-    alert('delete success!!');
+    alert('刪除成功!!');
     $('.act'+a_id).addClass("animated fadeOutDown");
     if(request == 2)
     abc(-1);
