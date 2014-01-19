@@ -98,17 +98,16 @@ $('#list_buy').click(
 
 $('#user_followed').click(function(){
   abc(-1);
-  $('html,body').scrollTop(0);
   FollowOrHost(1);
 }); 
 
 $('#user_created').click(function(){
   abc(-2);
-  $('html,body').scrollTop(0);
   FollowOrHost(2);
 });
 
 $('#recent_act').click(function(){
+  FollowOrHost(3);
   $.ajax({
 	  data:{
 	    u_id:$.cookie('id')
@@ -118,96 +117,97 @@ $('#recent_act').click(function(){
 	    //alert(data);
 	    content_fadeInOut(data,0);
 	  },
-	  error:function (xhr, ajaxOptions, thrownError) {
-	    alert(console.log(xhr));        
-	  }
-	}); 
+    error:function (xhr, ajaxOptions, thrownError) {
+      alert(console.log(xhr));        
+    }
+  }); 
 });
 function FollowOrHost(state){
-	if(state == 1){
-	  	//change  user_followed to dark red
-		$('#user_followed').css({"background-color":"rgba(148,38,38,0.61)",});
-		//change user_created to default
-		$('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
-		//change user_followed to default
-		$('#recent_act').css({"background-color":"rgba(216,104,122,0.61)",});
-	}
-	else if(state == 2){
-		//change user_followed to default
-		$('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
-	  	//change user_created to dark red
-		$('#user_created').css({"background-color":"rgba(148,38,38,0.61)",});
-		//change user_followed to default
-		$('#recent_act').css({"background-color":"rgba(216,104,122,0.61)",});
-	}
-	else if(state ==3){
-		//change user_followed to default
-		$('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
-		//change user_followed to default
-		$('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
-	  	//change user_created to dark red
-		$('#recent_act').css({"background-color":"rgba(148,38,38,0.61)",});
-	
-	}
+  $('html,body').scrollTop(0);
+  if(state == 1){
+    //change  user_followed to dark red
+    $('#user_followed').css({"background-color":"rgba(148,38,38,0.61)",});
+    //change user_created to default
+    $('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
+    //change user_followed to default
+    $('#recent_act').css({"background-color":"rgba(216,104,122,0.61)",});
+  }
+  else if(state == 2){
+    //change user_followed to default
+    $('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
+    //change user_created to dark red
+    $('#user_created').css({"background-color":"rgba(148,38,38,0.61)",});
+    //change user_followed to default
+    $('#recent_act').css({"background-color":"rgba(216,104,122,0.61)",});
+  }
+  else if(state ==3){
+    //change user_followed to default
+    $('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
+    //change user_followed to default
+    $('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
+    //change user_created to dark red
+    $('#recent_act').css({"background-color":"rgba(148,38,38,0.61)",});
+
+  }
 }
 
 function abc(category){
   //select category
   if(category > 0){	
-  $.ajax({
-	  data:{
-	    category:category
-	  },
-	  url:'get_cate.php', // CGI URL
-	  success:function(data){
-	    content_fadeInOut(data, 1);
-	  },
-	  error:function (xhr, ajaxOptions, thrownError) {
-	    alert(console.log(xhr));        
-	  }
-	}); 
+    $.ajax({
+      data:{
+	category:category
+      },
+      url:'get_cate.php', // CGI URL
+      success:function(data){
+	content_fadeInOut(data, 1);
+      },
+      error:function (xhr, ajaxOptions, thrownError) {
+	alert(console.log(xhr));        
+      }
+    }); 
   }
   //show follow activity
   else if(category == -1){
-  $.ajax({
-	  data:{
-	    u_id:$.cookie('id')
-	  },
-	  url:'get_user_post.php', // CGI URL
-	  success:function(data){
-	    content_fadeInOut(data, 0);
-	  },
-	  error:function (xhr, ajaxOptions, thrownError) {
-	    alert(console.log(xhr));        
-	  }
-	}); 
+    $.ajax({
+      data:{
+	u_id:$.cookie('id')
+      },
+      url:'get_user_post.php', // CGI URL
+      success:function(data){
+	content_fadeInOut(data, 0);
+      },
+      error:function (xhr, ajaxOptions, thrownError) {
+	alert(console.log(xhr));        
+      }
+    }); 
   }
   else if(category == -2){
-  $.ajax({
-	  data:{
-	    u_id:$.cookie('id')
-	  },
-	  url:'get_host_list.php', // CGI URL
-	  success:function(data){
-	    content_fadeInOut(data, -1);
-	  },
-	  error:function (xhr, ajaxOptions, thrownError) {
-	    alert(console.log(xhr));        
-	  }
-	}); 
+    $.ajax({
+      data:{
+	u_id:$.cookie('id')
+      },
+      url:'get_host_list.php', // CGI URL
+      success:function(data){
+	content_fadeInOut(data, -1);
+      },
+      error:function (xhr, ajaxOptions, thrownError) {
+	alert(console.log(xhr));        
+      }
+    }); 
   }
   //show all activity
   else if(category == 0){
-  $.ajax({
-	  data:{},
-	  url:'get_act.php', // CGI URL
-	  success:function(data){
-	    content_fadeInOut(data, 1);
-	  },
-	  error:function (xhr, ajaxOptions, thrownError) {
-	    alert(console.log(xhr));        
-	  }
-	}); 
+    $.ajax({
+      data:{},
+      url:'get_act.php', // CGI URL
+      success:function(data){
+	content_fadeInOut(data, 1);
+      },
+      error:function (xhr, ajaxOptions, thrownError) {
+	alert(console.log(xhr));        
+      }
+    }); 
   }
 
 }
@@ -231,64 +231,64 @@ $(document).ready(function(){
 
 function get_follow_post(){
   if($.cookie('id') != undefined){
-  //alert($.cookie('id'));
-  //$('#reminder').css({"top":$(window).height()-$('#reminder').height()});
-  $.ajax({
-    data:{
-    u_id:$.cookie('id')
-    },
-    url:'get_user_post.php',
-    success:function(data){
-      var hot = JSON.parse(data);
-      var i = 0;
-      var newest = [];
-      var cur_time = new Date();
-      while(i < hot.length){
-	//time += hot[i].date + ',\n';
-	var time = new Date(hot[i].date) ;
-	if((time - cur_time) > 0)
-	    newest.push(i);
-	i++;
+    //alert($.cookie('id'));
+    //$('#reminder').css({"top":$(window).height()-$('#reminder').height()});
+    $.ajax({
+      data:{
+	u_id:$.cookie('id')
+      },
+      url:'get_user_post.php',
+      success:function(data){
+	var hot = JSON.parse(data);
+	var i = 0;
+	var newest = [];
+	var cur_time = new Date();
+	while(i < hot.length){
+	  //time += hot[i].date + ',\n';
+	  var time = new Date(hot[i].date) ;
+	  if((time - cur_time) > 0)
+      newest.push(i);
+    i++;
+	}
+	display_reminder(data, newest);
+      },
+      error:function(xhr, ajaxOptions, throwError) {
+	alert(console.log(xhr));
       }
-      display_reminder(data, newest);
-    },
-    error:function(xhr, ajaxOptions, throwError) {
-      alert(console.log(xhr));
-	  }
-  });
+    });
   }
 }
 
 function get_host(){
   $.ajax({
     data:{
-    u_id:$.cookie('id')
+      u_id:$.cookie('id')
     },
-    url:'get_host_list.php',
-    success:function(data){
-    },
-    error:function(xhr, ajaxOptions, throwError) {
-      alert(console.log(xhr));
-	  }
+  url:'get_host_list.php',
+  success:function(data){
+  },
+  error:function(xhr, ajaxOptions, throwError) {
+    alert(console.log(xhr));
+  }
   });
 
 }
 
 function cancel_followed(a_id, request, u_id){
   $.ajax({
-  data:{
-	a_id:a_id,
-  	action:request,
-	u_id:$.cookie('id')
+    data:{
+      a_id:a_id,
+  action:request,
+  u_id:$.cookie('id')
     },
   url:'delete_act.php',
   success:function(){
     alert('delete success!!');
     $('.act'+a_id).addClass("animated fadeOutDown");
     if(request == 2)
-    	abc(-1);
+    abc(-1);
     else
-    	abc(-2);
+    abc(-2);
   },
   error:function(xhr, ajaxOptions, throwError){
     alert(console.log(xhr));
@@ -381,18 +381,18 @@ function display_content(data, fromwhere){
 	    alert(console.log(xhr));        
 	  }
 	}); 
-    }
-    else if(fromwhere == 0){
-      $('#delete_confirm').html('確定要刪除嗎?');
-      var temp = $(this).attr('name');
-      $('#delete_confirm').data('a_id', temp).data('request', '2').dialog("open");
-    }
-    else if(fromwhere == -1){
-      $('#delete_confirm').html('確定要刪除嗎?');
-      var temp = $(this).attr('name');
-      $('#delete_confirm').data('a_id', temp).data('request', '1').dialog("open");
       }
-  });
+      else if(fromwhere == 0){
+	$('#delete_confirm').html('確定要刪除嗎?');
+	var temp = $(this).attr('name');
+	$('#delete_confirm').data('a_id', temp).data('request', '2').dialog("open");
+      }
+      else if(fromwhere == -1){
+	$('#delete_confirm').html('確定要刪除嗎?');
+	var temp = $(this).attr('name');
+	$('#delete_confirm').data('a_id', temp).data('request', '1').dialog("open");
+      }
+    });
   }
 }
 
