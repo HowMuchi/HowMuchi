@@ -263,9 +263,6 @@ function display_content(data, fromwhere){
   }else{
     message = '取消參加';
   }
-  if(fromwhere == 0){
-  	$("#content_left").html('AloHA</br>');
-  }
   while(i>0){
     if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
       file_exist = hot[i].a_id;
