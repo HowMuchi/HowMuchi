@@ -483,20 +483,21 @@ function MyImage(img){
   img.width = 360;
   img.height = 219;
 }
+/*Click about_us  show staff info*/
 $("#about_us").click(function(){
   $("#content_left").html('');
   $("#content_left").append(
 	    '<div class="text">'+
-	    '<h3>大家都是好麻吉 一起玩樂 一起吃喝</h3>'+
-	    '</br>'+
-	    '<h3>關於我們</h3>'+
-	    '<hr></hr>'+
+	    '<h3 id ="about_us">關於我們</h3>'+
+	    //'<h3>大家都是好麻吉 一起玩樂 一起吃喝</h3>'+
+            '<hr>'+
+             '</br>'+
 	    ' <div class="wrap">'+
-	     ' <div class="staff">'+'<img src="wei.jpg">黃哲緯</img>'+'</div>'+
-	      '<div class="staff">'+'<img src="min.jpg">沈士閔</img>'+'</div>'+
-	      '<div class="staff">'+'<img src="pei.jpg">謝佩璇</img>'+'</div>'+
-	      '<div class="staff">'+'<img src="yo.jpg">陳宥任</img>'+'</div>'+
-	      '<div class="staff">'+'<img src="Me.jpg">凌偉誠</img>'+'</div>'+
+	     ' <div class="staff">'+'<img src="wei.jpg"><h4 id="mem_name">黃哲緯</h4></img>'+'</div>'+
+	      '<div class="staff">'+'<img src="min.jpg"><h4 id="mem_name">沈士閔</h4></img>'+'</div>'+
+	      '<div class="staff">'+'<img src="pei.jpg"><h4 id="mem_name">謝佩璇</h4></img>'+'</div>'+
+	      '<div class="staff">'+'<img src="yo.jpg" ><h4 id="mem_name">陳宥任</h4></img>'+'</div>'+
+	      '<div class="staff">'+'<img src="Me.jpg" ><h4 id="mem_name">凌偉誠</h4></img>'+'</div>'+
 		'</div>'+
 	     ' </div>'
 	      );

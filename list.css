@@ -53,19 +53,19 @@
 }
 #text_all{
   top:-5px;
-  margin-left:24%;
+  margin-left:29%;
 }
 #text_food{
   top:-5px;
-  margin-left:13%;
+  margin-left:18%;
 }
 #text_travel{
   top:-5px;
-  margin-left:2%;
+  margin-left:7%;
 }
 #text_buy{
   top:-5px;
-  margin-left:20%;
+  margin-left:23%;
 }
 .transition_show{
   -webkit-transition:opacity 0.5s ease;
