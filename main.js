@@ -1,9 +1,3 @@
-$('#logo').mouseover(function(){
-
-  $(this).addClass('animated shake');
-}).mouseout(function(){
-  $(this).removeClass('animated shake');
-});
 $('#menu_login').click(
     function(){
       $("#sign_in_form").css({"display":"inline"});
@@ -538,7 +532,8 @@ success:function(data){
    */
     id_name[i] = hot[i].a_id;
     $("#content_left").append(
-	'<div id = "box_5">'
+	'<div id = "box_5" class="act'
+	+hot[i].a_id+'">'
 	+'<div id="box_5_title" >'
 	+'<p>'+ hot[i].title + '</p>'
 	+'</div>'
@@ -553,7 +548,7 @@ success:function(data){
 	+hot[i].date 
 	+'</br>'
 	+'<a id="money">¤H¼Æ:</a>'
-	+'  '
+	+hot[i].now_amount
 	+'/'
 	+hot[i].amount
 	+'</p>'

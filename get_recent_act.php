@@ -10,11 +10,7 @@ mysql_query("SET NAMES utf8;", $conn);
 mysql_select_db($db_name)or die(mysql_error());
 
 $cur_user = $_REQUEST['u_id'];
-if($cur_user != '')
-	$query ="select * from 5_activity where a_id not in (select a_id from 5_follow where f_id = '$cur_user' or if_host = '$cur_user')";
-else{
-	$query = "select * from 5_activity";
-}
+$query ="select * from 5_activity a, 5_follow f where f_id = $cur_user and a.a_id = f.a_id and date < now() + interval 3 day and date > now()";
 $result =mysql_query($query);
 
 $return_arr = array();
@@ -27,19 +23,8 @@ while($data=mysql_fetch_array($result))
   $row_array['amount']=$data['amount'];
   $row_array['date']=$data['date'];
   $row_array['introduction']=urlencode($data['introduction']);
-
-  $act_id = $data['a_id'];
-  //query for the amount of joined people
-  $amount_query = mysql_query("select count(*) from 5_follow where a_id= $act_id"); 
-  while($now_amount=mysql_fetch_array($amount_query)){
-    $row_array['now_amount']=$now_amount['count(*)'];
-  }
   array_push($return_arr,$row_array);
 }
 echo urldecode(json_encode($return_arr));
-
-// while($data2 = mysql_fetch_array($condition_result)){
-//	echo $data2[0];
-// }
 ?>
 
