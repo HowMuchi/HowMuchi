@@ -200,17 +200,11 @@ $(function() {
 	}
 	});
 	$( this ).dialog( "close" );
-	}else{
-	  alert('請填寫完整');
 	}
       },
       Cancel: function() {
 	$( this ).dialog( "close" );
       },
-      /*'test':function(){
-	if(check_title(title) && check_people(people) && check_date(date))
-	  alert('correct');
-      }*/
     },
     position: {my:"center", at:"top", of:window },
     show: {
@@ -246,21 +240,36 @@ function create_act(){
 
 function check_title(o){
     if(o.val().length <= 4){
-      //$('#title_tip').append('請輸入標題!!');
+      $('#title_tip').html('請輸入標題!!');
+      $('#title_tip').delay(2000);
+      $('#title_tip').animate({opacity:0}, 300, function(){
+	$('#title_tip').html('');
+	$('#title_tip').css({'opacity':'1'});
+      });
       return false;
     }
     return true;
 }
 function check_people(o){
   if(!(/^[0-9]+$/.test(o.val().toString())) || o.val() < 2){  
-      //$('#people_tip').append('請輸入人數!!(不可小於兩人)');
+      $('#people_tip').html('請輸入人數!!(不可小於兩人)');
+      $('#people_tip').delay(2000);
+      $('#people_tip').animate({opacity:0}, 300, function(){
+	$('#people_tip').html('');
+	$('#people_tip').css({'opacity':'1'});
+      });
   	return false;
   }
   return true;
 }
 function check_date(o){
-      //$('#date_tip').append('請輸入日期!!');
   if( !(/^[1-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/.test(o.val().toString())) ){
+      $('#date_tip').html('請輸入日期!!');
+      $('#date_tip').delay(2000);
+      $('#date_tip').animate({opacity:0}, 300, function(){
+	$('#date_tip').html('');
+	$('#date_tip').css({'opacity':'1'});
+      });
     return false;
   }
   return true;

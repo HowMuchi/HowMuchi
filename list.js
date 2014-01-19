@@ -102,6 +102,12 @@ $('#user_followed').click(function(){
   FollowOrHost(1);
 }); 
 
+$('#user_created').click(function(){
+  abc(-2);
+  $('html,body').scrollTop(0);
+  FollowOrHost(1);
+});
+
 function FollowOrHost(state){
 	if(state == 1){
 	  	//change  user_followed to red
@@ -125,15 +131,7 @@ function abc(category){
 	  },
 	  url:'get_cate.php', // CGI URL
 	  success:function(data){
-	   $('#content_left').addClass("animated fadeOutDown");
-	   //$('#content').html('');
-	   $('#content_left').animate({opacity:1}, 1000, function(){
-	     $('#content_left').removeClass("animated fadeOutDown");
-	   $('#content_left').html("");
-	   $('#content_left').css({"opacity":"0"});
-	   display_content(data, 1);
-	   $('#content_left').addClass('animated fadeInUp');
-	   });
+	    content_fadeInOut(data, 1);
 	  },
 	  error:function (xhr, ajaxOptions, thrownError) {
 	    alert(console.log(xhr));        
@@ -147,15 +145,21 @@ function abc(category){
 	  },
 	  url:'get_user_post.php', // CGI URL
 	  success:function(data){
-	   $('#content_left').addClass("animated fadeOutDown");
-	   //$('#content').html('');
-	   $('#content_left').animate({opacity:1}, 1000, function(){
-	     $('#content_left').removeClass("animated fadeOutDown");
-	   $('#content_left').html("");
-	   $('#content_left').css({"opacity":"0"});
-	   display_content(data, 0);
-	   $('#content_left').addClass('animated fadeInUp');
-	   });
+	    content_fadeInOut(data, 0);
+	  },
+	  error:function (xhr, ajaxOptions, thrownError) {
+	    alert(console.log(xhr));        
+	  }
+	}); 
+  }
+  else if(category == -2){
+  $.ajax({
+	  data:{
+	    u_id:$.cookie('id')
+	  },
+	  url:'get_host_list.php', // CGI URL
+	  success:function(data){
+	    content_fadeInOut(data, -1);
 	  },
 	  error:function (xhr, ajaxOptions, thrownError) {
 	    alert(console.log(xhr));        
@@ -167,15 +171,7 @@ function abc(category){
 	  data:{},
 	  url:'get_act.php', // CGI URL
 	  success:function(data){
-	   $('#content_left').addClass("animated fadeOutDown");
-	   //$('#content').html('');
-	   $('#content_left').animate({opacity:1}, 1000, function(){
-	     $('#content_left').removeClass("animated fadeOutDown");
-	   $('#content_left').html("");
-	   $('#content_left').css({"opacity":"0"});
-	   display_content(data, 1);
-	   $('#content_left').addClass('animated fadeInUp');
-	   });
+	    content_fadeInOut(data, 1);
 	  },
 	  error:function (xhr, ajaxOptions, thrownError) {
 	    alert(console.log(xhr));        
@@ -184,9 +180,21 @@ function abc(category){
   }
 }
 
+function content_fadeInOut(data, type){
+  $('#content_left').addClass("animated fadeOutDown");
+  $('#content_left').animate({opacity:1}, 1000, function(){
+    $('#content_left').removeClass("animated fadeOutDown");
+    $('#content_left').html("");
+    $('#content_left').css({"opacity":"0"});
+    display_content(data, type);
+    $('#content_left').addClass('animated fadeInUp');
+  });
+
+}
+
 $(document).ready(function(){
   get_follow_post();
-  //get_host();
+  get_host();
 });
 
 function get_follow_post(){
@@ -226,7 +234,6 @@ function get_host(){
     },
     url:'get_host_list.php',
     success:function(data){
-      alert(data);
     },
     error:function(xhr, ajaxOptions, throwError) {
       alert(console.log(xhr));
@@ -245,10 +252,14 @@ function cancel_followed(a_id, request, u_id){
   url:'delete_act.php',
   success:function(){
     alert('delete success!!');
-    abc(-1);
+    if(request == 2)
+    	abc(-1);
+    else
+    	abc(-2);
   },
   error:function(xhr, ajaxOptions, throwError){
-    alert(console.log(xhr));
+    //alert(console.log(xhr));
+    alert('failllllll');
   }
   });
 }
@@ -268,8 +279,10 @@ function display_content(data, fromwhere){
   $("#content_left").html('');
   if(fromwhere == 1){
     message = '我要參加';
-  }else{
+  }else if(fromwhere == 0){
     message = '取消參加';
+  }else if(fromwhere == -1){
+    message = '解散開團';
   }
   while(i>0){
     if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
@@ -336,11 +349,18 @@ function display_content(data, fromwhere){
 	  }
 	}); 
     }
-    else{
+    else if(fromwhere == 0){
+      $('#delete_confirm').empty();
       $('#delete_confirm').append('確定要刪除嗎?');
       var temp = $(this).attr('name');
       $('#delete_confirm').data('a_id', temp).data('request', '2').dialog("open");
     }
+    else if(fromwhere == -1){
+      $('#delete_confirm').empty();
+      $('#delete_confirm').append('確定要刪除嗎?');
+      var temp = $(this).attr('name');
+      $('#delete_confirm').data('a_id', temp).data('request', '1').dialog("open");
+      }
   });
   }
 }
