@@ -170,7 +170,7 @@ function abc(category){
 
 $(document).ready(function(){
   get_follow_post();
-  get_host();
+  //get_host();
 });
 
 function get_follow_post(){
@@ -210,10 +210,10 @@ function get_host(){
     },
     url:'get_host_list.php',
     success:function(data){
-	alert(data);
+      alert(data);
     },
     error:function(xhr, ajaxOptions, throwError) {
-      alert(console);
+      alert(console.log(xhr));
 	  }
   });
 
