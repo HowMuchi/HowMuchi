@@ -329,6 +329,7 @@ $(function() {
 	},
       url:'attending_list.php', // CGI URL
       success:function(data){
+	alert(data);
 	loadContent();
       }
       });
@@ -592,7 +593,7 @@ success:function(data){
 	    a_id:$(this).attr('name'),
 	  u_id:$.cookie('id')
 	  },
-	  url:'attending_list.php', // CGI URL
+	  url:'attending_list_no_insert.php', // CGI URL
 	  success:function(data){
 	    var join=JSON.parse(data);
 	    for(var k=0;k<hot.length;k++){

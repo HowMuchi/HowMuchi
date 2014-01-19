@@ -20,6 +20,14 @@ while($data=mysql_fetch_array($result)){
   $row_array['amount']=$data['amount'];
   $row_array['date']=$data['date'];
   $row_array['introduction']=urlencode($data['introduction']);
+
+  $act_id = $data['a_id'];
+  //query for the amount of joined people
+  $amount_query = mysql_query("select count(*) from 5_follow where a_id= $act_id"); 
+  while($now_amount=mysql_fetch_array($amount_query)){
+    $row_array['now_amount']=$now_amount['count(*)'];
+  }
+
   array_push($return_arr,$row_array);
 }
 echo  urldecode(json_encode($return_arr));
