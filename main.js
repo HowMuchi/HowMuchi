@@ -497,6 +497,23 @@ $("#about_us").click(function(){
 	      );
 });
 
+function fix_img_name(id,category){
+     var fix;	
+       $.ajax({
+	  data:{
+	   a_id:id,
+           cate:category
+	  },
+	  url:'fix_img.php', // CGI URL
+	  success:function(data){
+	    alert(data);
+	    return data;
+	  },
+	  error:function (xhr, ajaxOptions, thrownError) {
+	    alert(console.log(xhr));        
+	  }
+	});
+}
 function loadContent(){
   var user_id
   if($.cookie('id')==null){
@@ -522,9 +539,11 @@ success:function(data){
   var path;   //$('.image').muImageResize({width: 150, height:150}); 
   $("#content_left").html('');
   while(i>-1){
-    path ='image2/'+hot[i].a_id+'.jpg';
+    //fix_img_name(hot[i].a_id,hot[i].category);
+    //path ='image2/'+hot[i].a_id+'.jpg';
+    //file_exist = hot[i].category;
     file_exist = hot[i].category;
-    
+      //fix_img_name(hot[i].a_id,hot[i].category);
     /*if(IsFileExist(path)==true)
       {file_exist = hot[i].a_id;}
     else
