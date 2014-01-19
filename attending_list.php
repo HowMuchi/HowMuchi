@@ -37,19 +37,19 @@ while($data2=mysql_fetch_array($attend_data2)){
 //        echo $a_id."  ".$f_id;
 if($attend_size < $attend_wanted_num)
 {
-//  $check_if_attended = "select f_id from 5_follow where a_id='$a_id' and f_id='$f_id'";
-//  $result=mysql_query($check_if_attended);
-//  if (mysql_num_rows($result)>0) {
-//    $atd_status=0;
-//  }  
-//  else{
+  $check_if_attended = "select f_id from 5_follow where a_id='$a_id' and f_id='$f_id'";
+  $result=mysql_query($check_if_attended);
+  if (mysql_num_rows($result)>0) {
+    $atd_status=0;
+  }  
+  else{
  // if (!$queryResource = mysql_query($mysql)){
     //die (mysql_error());
     $mysql = "insert into 5_follow(a_id , f_id,if_host) values ('$a_id', '$f_id',0)";
     mysql_query($mysql);
-    echo "attend success";
+   // echo "attend success";
     $atd_status=1;
- // }
+  }
 }
 else{
   //  echo "attend filed";
