@@ -97,16 +97,25 @@ $('#list_buy').click(
     });
 
 $('#user_followed').click(function(){
+  if($.cookie('id') != null){
   abc(-1);
   FollowOrHost(1);
+  }
+  else
+  alert('Please login!!');
 }); 
 
 $('#user_created').click(function(){
+  if($.cookie('id') != null){
   abc(-2);
   FollowOrHost(2);
+  }
+  else
+  alert('Please login!!');
 });
 
 $('#recent_act').click(function(){
+  if($.cookie('id') != null){
   FollowOrHost(3);
   $.ajax({
 	  data:{
@@ -120,7 +129,10 @@ $('#recent_act').click(function(){
     error:function (xhr, ajaxOptions, thrownError) {
       alert(console.log(xhr));        
     }
-  }); 
+  });
+  }
+  else
+  alert('Please login!!');
 });
 function FollowOrHost(state){
   $('html,body').scrollTop(0);
@@ -450,10 +462,10 @@ function display_reminder(data, newest){
     },function(){
       $(box_name).css({opacity:0.7});
       $(box_name).delay(3000);
-      //$(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
+      $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
     });
     $(box_name).delay(3000);
-    //$(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
+    $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
     i++;
   });
 }
