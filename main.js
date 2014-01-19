@@ -182,11 +182,16 @@ $(function() {
 	url:'open_act.php', // CGI URL
 	success:function(data){
 	  loadContent();
-	 
+	  $("#items option:selected").val('');
+	$('input[name=title]').val('');
+	$('input[name=people]').val('');
+	$('input[name=date]').val('');
+	$('textarea[name=introduction]').val('');
+
 	  document.getElementById('change_name').value=data;
-	  $(document).ready(function() { 
-	    $('#myForm').submit();
-	  });
+	$(document).ready(function() { 
+	  $('#myForm').submit();
+	});
 	},
 	error:function (xhr, ajaxOptions, thrownError) {
 	  alert(console.log(xhr));        
@@ -232,37 +237,37 @@ function create_act(){
 //open_act
 
 function check_title(o){
-    if(o.val().length <= 4){
-      $('#title_tip').html('請輸入標題!!');
-      $('#title_tip').delay(2000);
-      $('#title_tip').animate({opacity:0}, 300, function(){
-	$('#title_tip').html('');
-	$('#title_tip').css({'opacity':'1'});
-      });
-      return false;
-    }
-    return true;
+  if(o.val().length <= 4){
+    $('#title_tip').html('請輸入標題!!');
+    $('#title_tip').delay(2000);
+    $('#title_tip').animate({opacity:0}, 300, function(){
+      $('#title_tip').html('');
+      $('#title_tip').css({'opacity':'1'});
+    });
+    return false;
+  }
+  return true;
 }
 function check_people(o){
   if(!(/^[0-9]+$/.test(o.val().toString())) || o.val() < 2){  
-      $('#people_tip').html('請輸入人數!!(不可小於兩人)');
-      $('#people_tip').delay(2000);
-      $('#people_tip').animate({opacity:0}, 300, function(){
-	$('#people_tip').html('');
-	$('#people_tip').css({'opacity':'1'});
-      });
-  	return false;
+    $('#people_tip').html('請輸入人數!!(不可小於兩人)');
+    $('#people_tip').delay(2000);
+    $('#people_tip').animate({opacity:0}, 300, function(){
+      $('#people_tip').html('');
+      $('#people_tip').css({'opacity':'1'});
+    });
+    return false;
   }
   return true;
 }
 function check_date(o){
   if( !(/^[1-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/.test(o.val().toString())) ){
-      $('#date_tip').html('請輸入日期!!');
-      $('#date_tip').delay(2000);
-      $('#date_tip').animate({opacity:0}, 300, function(){
-	$('#date_tip').html('');
-	$('#date_tip').css({'opacity':'1'});
-      });
+    $('#date_tip').html('請輸入日期!!');
+    $('#date_tip').delay(2000);
+    $('#date_tip').animate({opacity:0}, 300, function(){
+      $('#date_tip').html('');
+      $('#date_tip').css({'opacity':'1'});
+    });
     return false;
   }
   return true;
@@ -335,9 +340,9 @@ $(function() {
       });
       $( this ).dialog( "close" );
     },
-    "取消": function() {
-      $( this ).dialog( "close" );
-    }
+  "取消": function() {
+    $( this ).dialog( "close" );
+  }
   },
   position: {my:"center", at:"top", of:window },
   show: {
@@ -482,174 +487,174 @@ function MyImage(img){
 $("#about_us").click(function(){
   $("#content_left").html('');
   $("#content_left").append(
-	    '<div class="text">'+
-	    '<h3 id ="about_us">關於我們</h3>'+
-	    //'<h3>大家都是好麻吉 一起玩樂 一起吃喝</h3>'+
-            '<hr>'+
-             '</br>'+
-	    ' <div class="wrap">'+
-	     ' <div class="staff">'+'<img src="wei.jpg"><h4 id="mem_name">黃哲緯</h4></img>'+'</div>'+
-	      '<div class="staff">'+'<img src="min.jpg"><h4 id="mem_name">沈士閔</h4></img>'+'</div>'+
-	      '<div class="staff">'+'<img src="pei.jpg"><h4 id="mem_name">謝佩璇</h4></img>'+'</div>'+
-	      '<div class="staff">'+'<img src="yo.jpg" ><h4 id="mem_name">陳宥任</h4></img>'+'</div>'+
-	      '<div class="staff">'+'<img src="Me.jpg" ><h4 id="mem_name">凌偉誠</h4></img>'+'</div>'+
-		'</div>'+
-	     ' </div>'
-	      );
+    '<div class="text">'+
+    '<h3 id ="about_us">關於我們</h3>'+
+    //'<h3>大家都是好麻吉 一起玩樂 一起吃喝</h3>'+
+    '<hr>'+
+    '</br>'+
+    ' <div class="wrap">'+
+    ' <div class="staff">'+'<img src="wei.jpg"><h4 id="mem_name">黃哲緯</h4></img>'+'</div>'+
+    '<div class="staff">'+'<img src="min.jpg"><h4 id="mem_name">沈士閔</h4></img>'+'</div>'+
+    '<div class="staff">'+'<img src="pei.jpg"><h4 id="mem_name">謝佩璇</h4></img>'+'</div>'+
+    '<div class="staff">'+'<img src="yo.jpg" ><h4 id="mem_name">陳宥任</h4></img>'+'</div>'+
+    '<div class="staff">'+'<img src="Me.jpg" ><h4 id="mem_name">凌偉誠</h4></img>'+'</div>'+
+    '</div>'+
+    ' </div>'
+    );
 });
 
 function fix_img_name(id,category){
-     var fix;	
-       $.ajax({
-	  data:{
-	   a_id:id,
-           cate:category
-	  },
-	  url:'fix_img.php', // CGI URL
-	  success:function(data){
-	    alert(data);
-	    return data;
-	  },
-	  error:function (xhr, ajaxOptions, thrownError) {
-	    alert(console.log(xhr));        
-	  }
-	});
+  var fix;	
+  $.ajax({
+    data:{
+      a_id:id,
+    cate:category
+    },
+    url:'fix_img.php', // CGI URL
+    success:function(data){
+      alert(data);
+      return data;
+    },
+    error:function (xhr, ajaxOptions, thrownError) {
+      alert(console.log(xhr));        
+    }
+  });
 }
 function loadContent(){
   var user_id
-  if($.cookie('id')==null){
-    user_id = '';
-  }
-  else{
-    user_id = $.cookie('id');
-  }
-$.ajax({
-  data:{
-    u_id: user_id
-  },
-url:'get_act.php', // CGI URL
-success:function(data){
-  var hot = JSON.parse(data); 
-  var but;
-  var button_name;
-  var i=(hot.length-1);
-  var id_name = new Array(1000);
-  var test;
-  var image;
-  var file_exist;
-  var path;   //$('.image').muImageResize({width: 150, height:150}); 
-  $("#content_left").html('');
-  while(i>-1){
-    //fix_img_name(hot[i].a_id,hot[i].category);
-    //path ='image2/'+hot[i].a_id+'.jpg';
-    //file_exist = hot[i].category;
-    file_exist = hot[i].category;
+    if($.cookie('id')==null){
+      user_id = '';
+    }
+    else{
+      user_id = $.cookie('id');
+    }
+  $.ajax({
+    data:{
+      u_id: user_id
+    },
+  url:'get_act.php', // CGI URL
+  success:function(data){
+    var hot = JSON.parse(data); 
+    var but;
+    var button_name;
+    var i=(hot.length-1);
+    var id_name = new Array(1000);
+    var test;
+    var image;
+    var file_exist;
+    var path;   //$('.image').muImageResize({width: 150, height:150}); 
+    $("#content_left").html('');
+    while(i>-1){
       //fix_img_name(hot[i].a_id,hot[i].category);
-    /*if(IsFileExist(path)==true)
-      {file_exist = hot[i].a_id;}
-    else
-      {file_exist = hot[i].category;}
-   */
-    id_name[i] = hot[i].a_id;
-    $("#content_left").append(
-	'<div id = "box_5" class="act'
-	+hot[i].a_id+'">'
-	+'<div id="box_5_title" >'
-	+'<p>'+ hot[i].title + '</p>'
-	+'</div>'
-	+'<div id="box_5_content">'
-	+'<div id="box_5_image" >'
-	+'<img src="image2/'+file_exist+'.jpg" onload="javascript:MyImage(this);" border="0">'
-	+'</div>'
-	+'<div id="box_5_text">'
-	+'<div id="box_5_info">'
-	+'<p>'
-	+'<a id="money">日期:</a>'
-	+hot[i].date 
-	+'</br>'
-	+'<a id="money">人數:</a>'
-	+hot[i].now_amount
-	+'/'
-	+hot[i].amount
-	+'</p>'
-	+'</div>'
-	+'<div id="box_5_button">'
-	+'<button type="button" href="#" id=test'+ hot[i].a_id  +' class="orange" name=' + hot[i].a_id + '>我要參加</button>'
-	+'</div>'
-	+'</div>'
-	+'</div>'
-	);
-    i--;
-  }
-  for(var i=0;i<hot.length;i++){
-    $("#test"+hot[i].a_id).click(function(){
-      if($.cookie('id') == null){
-	alert('請登入!!!');
-      }
-      else{
-	$( "#join_page" ).dialog( "open" );
-	$.ajax({
-	  data:{
-	    a_id:$(this).attr('name'),
-	  u_id:$.cookie('id')
-	  },
-	  url:'attending_list_no_insert.php', // CGI URL
-	  success:function(data){
-	    var join=JSON.parse(data);
-	    for(var k=0;k<hot.length;k++){
-	      if(join.a_id==hot[k].a_id) {
-		$("#join_page").empty();
-		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
-		  "出遊時間:"+"   "+hot[k].date+"</br>"+
-		  "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
-		  "簡介:"+"    "+hot[k].introduction);
-		$("#join_page").attr("name",join.a_id);
+      //path ='image2/'+hot[i].a_id+'.jpg';
+      //file_exist = hot[i].category;
+      file_exist = hot[i].category;
+      //fix_img_name(hot[i].a_id,hot[i].category);
+      /*if(IsFileExist(path)==true)
+	{file_exist = hot[i].a_id;}
+	else
+	{file_exist = hot[i].category;}
+	*/
+      id_name[i] = hot[i].a_id;
+      $("#content_left").append(
+	  '<div id = "box_5" class="act'
+	  +hot[i].a_id+'">'
+	  +'<div id="box_5_title" >'
+	  +'<p>'+ hot[i].title + '</p>'
+	  +'</div>'
+	  +'<div id="box_5_content">'
+	  +'<div id="box_5_image" >'
+	  +'<img src="image2/'+file_exist+'.jpg" onload="javascript:MyImage(this);" border="0">'
+	  +'</div>'
+	  +'<div id="box_5_text">'
+	  +'<div id="box_5_info">'
+	  +'<p>'
+	  +'<a id="money">日期:</a>'
+	  +hot[i].date 
+	  +'</br>'
+	  +'<a id="money">人數:</a>'
+	  +hot[i].now_amount
+	  +'/'
+	  +hot[i].amount
+	  +'</p>'
+	  +'</div>'
+	  +'<div id="box_5_button">'
+	  +'<button type="button" href="#" id=test'+ hot[i].a_id  +' class="orange" name=' + hot[i].a_id + '>我要參加</button>'
+	  +'</div>'
+	  +'</div>'
+	  +'</div>'
+	  );
+      i--;
+    }
+    for(var i=0;i<hot.length;i++){
+      $("#test"+hot[i].a_id).click(function(){
+	if($.cookie('id') == null){
+	  alert('請登入!!!');
+	}
+	else{
+	  $( "#join_page" ).dialog( "open" );
+	  $.ajax({
+	    data:{
+	      a_id:$(this).attr('name'),
+	    u_id:$.cookie('id')
+	    },
+	    url:'attending_list_no_insert.php', // CGI URL
+	    success:function(data){
+	      var join=JSON.parse(data);
+	      for(var k=0;k<hot.length;k++){
+		if(join.a_id==hot[k].a_id) {
+		  $("#join_page").empty();
+		  $("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
+		    "出遊時間:"+"   "+hot[k].date+"</br>"+
+		    "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
+		    "簡介:"+"    "+hot[k].introduction);
+		  $("#join_page").attr("name",join.a_id);
+		}
 	      }
+	    },
+	    error:function (xhr, ajaxOptions, thrownError) {
+	      alert(console.log(xhr));        
 	    }
-	  },
-	  error:function (xhr, ajaxOptions, thrownError) {
-	    alert(console.log(xhr));        
-	  }
-	}); 
-      }
-    });
-    /*discard button*/
-    $("#discard"+hot[i].a_id).click(function(){
-      if($.cookie('id')== null){
-	alert("請登入!!");
-      }
-      else{
-	alert("Fuck U");
-	$.ajax({
-	  data:{
-	    a_id:$(this).attr('name'),
-	  u_id:$.cookie('id')
-	  },
-	  url:'get_specific_activity_datat.php', // CGI URL
-	  success:function(data){
-	    var join=JSON.parse(data);
-	    for(var k=1;k<hot.length;k++){
-	      if(join.a_id==hot[k].a_id) {
-		$('#discard'+join.a_id).hide();
-		$('#test'+join.a_id).show();
+	  }); 
+	}
+      });
+      /*discard button*/
+      $("#discard"+hot[i].a_id).click(function(){
+	if($.cookie('id')== null){
+	  alert("請登入!!");
+	}
+	else{
+	  alert("Fuck U");
+	  $.ajax({
+	    data:{
+	      a_id:$(this).attr('name'),
+	    u_id:$.cookie('id')
+	    },
+	    url:'get_specific_activity_datat.php', // CGI URL
+	    success:function(data){
+	      var join=JSON.parse(data);
+	      for(var k=1;k<hot.length;k++){
+		if(join.a_id==hot[k].a_id) {
+		  $('#discard'+join.a_id).hide();
+		  $('#test'+join.a_id).show();
+		}
 	      }
+	    },
+	    error:function (xhr, ajaxOptions, thrownError) {
+	      alert(console.log(xhr));        
 	    }
-	  },
-	  error:function (xhr, ajaxOptions, thrownError) {
-	    alert(console.log(xhr));        
-	  }
-	}); 
-	alert("Aloha");
-      }
+	  }); 
+	  alert("Aloha");
+	}
 
-    });
+      });
+
+    }
 
   }
-
-}
-});
+  });
 
 }
 $(function(){
-	loadContent();
+  loadContent();
 });
