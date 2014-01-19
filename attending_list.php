@@ -12,7 +12,7 @@ mysql_select_db($db_name)or die(mysql_error());
 $a_id = $_REQUEST['a_id'];
 $f_id = $_REQUEST['u_id'];
 
-$attend_ct_query = "SELECT count(f_id) from 5_follow where a_id=".$a_id;
+$attend_ct_query = "SELECT count(f_id) from 5_follow where a_id=$a_id";
 if (!$attend_data = mysql_query($attend_ct_query, $conn)){
   die (mysql_error());
 }
@@ -25,7 +25,7 @@ while($data = mysql_fetch_array($attend_data))
   //	   echo "current attending people: " .$attend_size."\n";
 }
 
-$check_query = "SELECT amount from 5_activity where a_id=".$a_id;
+$check_query = "SELECT amount from 5_activity where a_id=$a_id";
 if (!$attend_data2 = mysql_query($check_query)){
   die (mysql_error());
 }

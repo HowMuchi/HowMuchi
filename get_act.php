@@ -17,22 +17,9 @@ else{
 }
 $result =mysql_query($query);
 
-$mysql_query = "SELECT a_id from 5_follow where f_id='$u_id'";
-
-$condition_result = mysql_query($mysql_query);
-
 $return_arr = array();
 while($data=mysql_fetch_array($result))
 {
-//  $row_array = array();
-/*  while($data2 = mysql_fetch_array($condition_result)){
-    if($data['a_id']==$data2['a_id']){
-      $row_array['att_status']=1;
-    break;
-    }
-    else
-      $row_array['att_status']=0;
-}*/
   $row_array['a_id']=$data['a_id'];
   $row_array['title']=urlencode($data['title']);
   $row_array['h_id']=$data['h_id'];
@@ -40,12 +27,19 @@ while($data=mysql_fetch_array($result))
   $row_array['amount']=$data['amount'];
   $row_array['date']=$data['date'];
   $row_array['introduction']=urlencode($data['introduction']);
+
+  $act_id = $data['a_id'];
+  //query for the amount of joined people
+  $amount_query = mysql_query("select count(*) from 5_follow where a_id= $act_id"); 
+  while($now_amount=mysql_fetch_array($amount_query)){
+    $row_array['now_amount']=$now_amount['count(*)'];
+  }
   array_push($return_arr,$row_array);
 }
 echo urldecode(json_encode($return_arr));
- 
+
 // while($data2 = mysql_fetch_array($condition_result)){
- //	echo $data2[0];
+//	echo $data2[0];
 // }
 ?>
 

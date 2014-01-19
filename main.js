@@ -546,7 +546,7 @@ success:function(data){
 	+hot[i].date 
 	+'</br>'
 	+'<a id="money">¤H¼Æ:</a>'
-	+'  '
+	+hot[i].now_amount
 	+'/'
 	+hot[i].amount
 	+'</p>'
