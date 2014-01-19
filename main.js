@@ -213,7 +213,7 @@ $(function() {
     }
   }
   );
-
+});
 function create_act(){
   if($.cookie('name') != null) {
     $( "#open_act_page" ).dialog( "open" );
