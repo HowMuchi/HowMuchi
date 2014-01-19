@@ -525,15 +525,17 @@ success:function(data){
   var test;
   var image;
   var file_exist;
-  //$('.image').muImageResize({width: 150, height:150}); 
+  var path;   //$('.image').muImageResize({width: 150, height:150}); 
   $("#content_left").html('');
   while(i>-1){
-    if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
-  file_exist = hot[i].a_id;
+    path ='image2/'+hot[i].a_id+'.jpg';
+    file_exist = hot[i].category;
+    
+    /*if(IsFileExist(path)==true)
+      {file_exist = hot[i].a_id;}
     else
-  file_exist = hot[i].category;
-
-    //MyImage("image2/" + file_exist + ".jpg");
+      {file_exist = hot[i].category;}
+   */
     id_name[i] = hot[i].a_id;
     $("#content_left").append(
 	'<div id = "box_5">'
