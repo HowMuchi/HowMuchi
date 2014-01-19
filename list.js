@@ -99,7 +99,15 @@ $('#list_buy').click(
 $('#user_followed').click(function(){
   abc(-1);
   $('html,body').scrollTop(0);
-});  
+  FollowOrHost(1);
+}); 
+
+function FollowOrHost(state){
+	if(state == 1){
+		$('#user_followed').css({"background-color":"rgba(58,124,196,0.61)",});
+		alert("Change");
+	}
+}
 
 function abc(category){
   if(category > 0){	
@@ -213,7 +221,7 @@ function get_host(){
 	alert(data);
     },
     error:function(xhr, ajaxOptions, throwError) {
-      alert(console.log(xhr));
+      alert(console);
 	  }
   });
 
@@ -221,10 +229,10 @@ function get_host(){
 
 function cancel_followed(a_id, request, u_id){
   $.ajax({
-    data:{
-      a_id:a_id,
-  action:request,
-  u_id:$.cookie('id')
+  data:{
+	a_id:a_id,
+  	action:request,
+	u_id:$.cookie('id')
     },
   url:'delete_act.php',
   success:function(){
@@ -254,6 +262,9 @@ function display_content(data, fromwhere){
     message = '我要參加';
   }else{
     message = '取消參加';
+  }
+  if(fromwhere == 0){
+  	$("#content_left").html('AloHA</br>');
   }
   while(i>0){
     if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
@@ -319,12 +330,13 @@ function display_content(data, fromwhere){
 	    alert(console.log(xhr));        
 	  }
 	}); 
-      }
-      else{
-	$('#delete_confirm').append('確定要刪除嗎?');
-	$('#delete_confirm').data('a_id', $(this).attr('name')).data('request', '2').dialog("open");
-      }
-    });
+    }
+    else{
+      $('#delete_confirm').append('確定要刪除嗎?');
+      var temp = $(this).attr('name');
+      $('#delete_confirm').data('a_id', temp).data('request', '2').dialog("open");
+    }
+  });
   }
 }
 

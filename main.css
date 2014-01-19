@@ -248,7 +248,7 @@ body{
   margin-top:20px;
   padding-top:10px;
   padding-bottom:10px;
-  background-color:rgba(160,62,7,0.61);
+  background-color:rgba(7,160,13,0.61);
   color: white;
   -webkit-border-radius:8px;
   border-radius:8px;
@@ -258,8 +258,8 @@ body{
 
 }
 #content_right #user_information li:hover{
-  -webkit-transform:translate(3em,0);
-  transform:translate(3em,0);
+  -webkit-transform:translate(1em,0);
+  transform:translate(1em,0);
 }
 .orange{
   float:right;	
