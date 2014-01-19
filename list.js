@@ -104,16 +104,16 @@ $('#user_followed').click(function(){
 
 function FollowOrHost(state){
 	if(state == 1){
-	  	//change  user_followed to blue
-		$('#user_followed').css({"background-color":"rgba(58,124,196,0.61)",});
-		//change user_created to green
-		$('#user_created').css({"background-color":"rgba(70,143,72,0.61)",});
+	  	//change  user_followed to red
+		$('#user_followed').css({"background-color":"rgba(216,104,122,0.61)",});
+		//change user_created to blue
+		$('#user_created').css({"background-color":"rgba(58,124,196,0.61)",});
 	}
 	else if(state == 2){
-	  	//change user_created to blue
-		$('#user_created').css({"background-color":"rgba(58,124,196,0.61)",});
-		//change user_followed to green
-		$('#user_followed').css({"background-color":"rgba(70,143,72,0.61)",});
+	  	//change user_created to red
+		$('#user_created').css({"background-color":"rgba(216,104,122,0.61)",});
+		//change user_followed to blue
+		$('#user_followed').css({"background-color":"rgba(58,124,196,0.61)",});
 	}
 }
 
