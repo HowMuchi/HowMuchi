@@ -2,7 +2,7 @@ $(document).ready(function() {
   // bind 'myForm' and provide a simple callback function 
   $('#myForm').ajaxForm(function(e) { 
     //url:'upload.php',
-    alert("your file has been uploaded"); 
+    //alert("your file has been uploaded"); 
   }); 
 });
 /*
