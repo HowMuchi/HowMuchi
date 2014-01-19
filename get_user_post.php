@@ -24,7 +24,14 @@ while($data = mysql_fetch_array($result))
    $result_ar['amount']=$data['amount'];
    $result_ar['date']=$data['date'];
    $result_ar['introdution']=$data['introduction'];
+
+   $act_id = $data['a_id'];
+   //query for the amount of joined people
+   $amount_query = mysql_query("select count(*) from 5_follow where a_id= $act_id"); 
+   while($now_amount=mysql_fetch_array($amount_query)){
+     $result_ar['now_amount']=$now_amount['count(*)'];
+   }
    array_push($result_a,$result_ar);  
 }
- echo urldecode(json_encode($result_a));
+echo urldecode(json_encode($result_a));
 ?>
