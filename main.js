@@ -66,6 +66,7 @@ $("#in").keypress(function(e){
 	    $('#member').css({"display":"none"});
 	    $('#member_after').css({"display":"inline"});
 	    loadContent();
+	    get_follow_post();
 	  }
 	  else{
 	    $('#sign_in_form input').val('');
@@ -111,6 +112,7 @@ $("#in_1").keypress(function(e){
 	    $('#member').css({"display":"none"});
 	    $('#member_after').css({"display":"block"});
 	    loadContent();
+	    get_follow_post();
 	  }
 	  else{
 	    $('#sign_in_form input').val('');
