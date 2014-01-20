@@ -146,6 +146,7 @@ $('body').keypress(function(e){
 $('#menu_logout').click(function(){
   $.removeCookie('name');
   $.removeCookie('id');
+  $('#username').html('');
   $('#member_after').css({"display":"none"});
   $('#member').css({"display":"block"});
   $('#reminder').html('');
