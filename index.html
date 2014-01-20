@@ -34,9 +34,11 @@
 	</ul>
       </div>
       <div id="member_after" class='textright'>
+	<div>
 	<ul class="menubar">
-	  <li><span id="menu_logout">µn¥X</span></li>
+	  <li><span id='user_name'></span><span id="menu_logout">µn¥X</span></li>
 	</ul>
+	</div>
       </div>
 
 
@@ -149,6 +151,7 @@
       );*/
       $('#member').css({"display":"none"});
       $('#member_after').css({"display":"inline"});
+      $('#user_name').html('Hi!!'+$.cookie('name'));
     }
   });
 </script>

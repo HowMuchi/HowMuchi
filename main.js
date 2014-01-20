@@ -14,6 +14,7 @@ $('#login').click(function(){
       jQuery('#sign_in_information').html(data);
       if(data == 'success'){
 	$('#sign_in_form input').val('');
+	$('#user_name').html('Hi!!'+$.cookie('name'));
 	$('#sign_in_form').css({"display":"none"});
 	$('#sign_in_information').css({"display":"inline"});
 	$('#sign_in_information').animate({opacity:0},600, function(){
@@ -58,6 +59,7 @@ $("#in").keypress(function(e){
 	  jQuery('#sign_in_information').html(data);
 	  if(data == 'success'){
 	    $('#sign_in_form input').val('');
+	    $('#user_name').html('Hi!!'+$.cookie('name'));
 	    $('#sign_in_form').css({"display":"none"});
 	    $('#sign_in_information').css({"display":"inline"});
 	    $('#sign_in_information').animate({opacity:0},600, function(){
@@ -104,6 +106,7 @@ $("#in_1").keypress(function(e){
 	  jQuery('#sign_in_information').html(data);
 	  if(data == 'success'){
 	    $('#sign_in_form input').val('');
+	    $('#user_name').html('Hi!!'+$.cookie('name'));
 	    $('#sign_in_form').css({"display":"none"});
 	    $('#sign_in_information').css({"display":"block"});
 	    $('#sign_in_information').animate({opacity:0},600, function(){
@@ -272,7 +275,7 @@ function check_date(o){
 // end of open_act
 $('#items').change(function(){
   var a = '['+$('#items option:selected').text()+'] ';
-  $('#title_input').attr('value', a);
+  $('#title_input').val(a);
 });
 
 
