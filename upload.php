@@ -39,6 +39,7 @@ if(!move_uploaded_file($_FILES['SelectedFile']['tmp_name'], 'image2/' .  $a_id.'
 
 // Success!
 outputJSON('File uploaded successfully to "' . 'image2/' . $a_id.'.'.$sub_name. '".', 'success');
+
  
 echo "$user_id";
 ?>
