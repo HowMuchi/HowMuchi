@@ -23,8 +23,8 @@ while($data = mysql_fetch_array($result))
    $result_ar['title']=$data['title'];
    $result_ar['amount']=$data['amount'];
    $result_ar['date']=$data['date'];
-   $result_ar['introdution']=$data['introduction'];
-
+   $result_ar['introduction']=$data['introduction'];
+   $result_ar['if_host']=$data['if_host'];
    $act_id = $data['a_id'];
    //query for the amount of joined people
    $amount_query = mysql_query("select count(*) from 5_follow where a_id= $act_id"); 
