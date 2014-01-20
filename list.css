@@ -199,10 +199,27 @@
 }
 
 .reminder_box{
-  background-color:#ff810d;
+  background-color:rgba(238, 124, 20, 0.8);
   height:60px;
   width:100%;
   position:absolute;
   cursor:pointer;
+  border:solid 2px #fd7900;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
   opacity:0.7;
+  margin-left:10px;
+}
+
+.reminder_box > p{
+  margin-left:5px;
+  margin-top:5px;
+  font-family:·L³n¥¿¶ÂÅé;
+  letter-spacing:2px;
+  line-height:23px;
+}
+
+span.ui-button-text{
+  font-size:10px;
 }

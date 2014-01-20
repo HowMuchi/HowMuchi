@@ -25,6 +25,7 @@ $('#login').click(function(){
 	loadContent();
       }
       else{
+	$('#sign_in_form input').val('');
 	$('#sign_in_information').html(data);
 	$('#sign_in_form').css({"display":"none"});
 	$('#sign_in_information').css({"display":"inline"});
@@ -67,6 +68,7 @@ $("#in").keypress(function(e){
 	    loadContent();
 	  }
 	  else{
+	    $('#sign_in_form input').val('');
 	    $('#sign_in_information').html(data);
 	    $('#sign_in_form').css({"display":"none"});
 	    $('#sign_in_information').css({"display":"inline"});
@@ -111,6 +113,7 @@ $("#in_1").keypress(function(e){
 	    loadContent();
 	  }
 	  else{
+	    $('#sign_in_form input').val('');
 	    $('#sign_in_information').html(data);
 	    $('#sign_in_form').css({"display":"none"});
 	    $('#sign_in_information').css({"display":"block"});
@@ -317,8 +320,8 @@ function checkRegexp( o, regexp, n ) {
 $(function() {
   $( "#join_page" ).dialog({
     autoOpen: false,
-  height: 500,
-  width: 600,
+  height: 350,
+  width: 400,
   modal:true,
   buttons: {
     "°Ñ¥[": function() {

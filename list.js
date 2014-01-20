@@ -102,7 +102,7 @@ $('#user_followed').click(function(){
   FollowOrHost(1);
   }
   else
-  alert('Please login!!');
+  alert('請先登入!!');
 }); 
 
 $('#user_created').click(function(){
@@ -111,7 +111,7 @@ $('#user_created').click(function(){
   FollowOrHost(2);
   }
   else
-  alert('Please login!!');
+  alert('請先登入!!');
 });
 
 $('#recent_act').click(function(){
@@ -132,7 +132,7 @@ $('#recent_act').click(function(){
   });
   }
   else
-  alert('Please login!!');
+  alert('請先登入!!');
 });
 function FollowOrHost(state){
   $('html,body').scrollTop(0);
@@ -211,7 +211,9 @@ function abc(category){
   //show all activity
   else if(category == 0){
     $.ajax({
-      data:{},
+      data:{
+	u_id:$.cookie('id')
+      },
       url:'get_act.php', // CGI URL
       success:function(data){
 	content_fadeInOut(data, 1);
@@ -378,12 +380,12 @@ function display_content(data, fromwhere){
 	}); 
       }
       else if(fromwhere == 0){
-	$('#delete_confirm').html('確定要刪除嗎?');
+	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
 	var temp = $(this).attr('name');
 	$('#delete_confirm').data('a_id', temp).data('request', '2').dialog("open");
       }
       else if(fromwhere == -1){
-	$('#delete_confirm').html('確定要刪除嗎?');
+	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
 	var temp = $(this).attr('name');
 	$('#delete_confirm').data('a_id', temp).data('request', '1').dialog("open");
       }
@@ -394,8 +396,8 @@ function display_content(data, fromwhere){
 $(function() {
   $( "#activity_info_dialog" ).dialog({
     autoOpen: false,
-  height: 500,
-  width: 600,
+  height: 350,
+  width: 400,
   modal:true,
   buttons: {
     "朕知道了": function() {
@@ -415,8 +417,8 @@ $(function() {
 $(function() {
   $( "#delete_confirm" ).dialog({
     autoOpen: false,
-    height: 500,
-    width: 600,
+    height: 250,
+    width: 300,
     modal:true,
     buttons: {
       "確定":function(){
@@ -444,8 +446,18 @@ function display_reminder(data, newest){
   $.each(newest, function(index, value){
     var box_name = '#reminder_box_' + index;
     $('.reminder').css({"display":"block"});
+    var cur_time = new Date();
+    var time = new Date(hot[value].date);
+    gap = parseInt((time - cur_time)/86400000);
+    if(gap == 0){
+      alertstring = "就是今天!!";
+    }else if(gap == 1){
+      alertstring = "就是明天!!";
+    }else{
+      alertstring = "還有"+gap+"天";
+    }
     $('#reminder').append(
-      '<div class=\'reminder_box\' id=\'reminder_box_'+index+'\'>'+hot[value].title+'</div>');
+      '<div class=\'reminder_box\' id=\'reminder_box_'+index+'\'><p>'+hot[value].title+'</br>'+alertstring+'!!</p></div>');
     $("#activity_info_dialog").attr("name",hot[value].a_id);
     $(box_name).click(function(){
       $( "#activity_info_dialog" ).empty();
@@ -455,17 +467,17 @@ function display_reminder(data, newest){
 	"簡介"+"    "+hot[value].introduction);
       $( "#activity_info_dialog" ).dialog( "open" );
     });
-    $(box_name).css({"top":$(window).height()-60*(index+1)-5*(index)});
+    $(box_name).css({"top":$(window).height()-10-60*(index+1)-5*(index)});
     $(box_name).hover(function(){
       $(box_name).stop(true, false);
       $(box_name).css({opacity:1});
     },function(){
       $(box_name).css({opacity:0.7});
-      $(box_name).delay(3000);
-      $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
+      $(box_name).delay(7000);
+      $(box_name).animate({opacity:0}, 800, function(){$(box_name).remove();});
     });
-    $(box_name).delay(3000);
-    $(box_name).animate({opacity:0}, 2000, function(){$(box_name).remove();});
+    $(box_name).delay(7000);
+    $(box_name).animate({opacity:0}, 800, function(){$(box_name).remove();});
     i++;
   });
 }
