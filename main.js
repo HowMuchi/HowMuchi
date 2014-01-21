@@ -546,15 +546,15 @@ function loadContent(){
     $("#content_left").html('');
     while(i>-1){
       //fix_img_name(hot[i].a_id,hot[i].category);
-      //path ='image2/'+hot[i].a_id+'.jpg';
+      path ='image2/'+hot[i].a_id+'.jpg';
       //file_exist = hot[i].category;
-      file_exist = hot[i].category;
+      //file_exist = hot[i].category;
       //fix_img_name(hot[i].a_id,hot[i].category);
-      /*if(IsFileExist(path)==true)
+      if(IsFileExist(path))
 	{file_exist = hot[i].a_id;}
 	else
 	{file_exist = hot[i].category;}
-	*/
+	
       id_name[i] = hot[i].a_id;
       $("#content_left").append(
 	  '<div id = "box_5" class="act'
