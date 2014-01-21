@@ -563,7 +563,7 @@ function loadContent(){
 	  +'<p>'+ hot[i].title + '</p>'
 	  +'</div>'
 	  +'<div id="box_5_content">'
-	  +'<div id="box_5_image" >'
+	  +'<div class="box_5_image" >'
 	  +'<img src="image2/'+file_exist+'.jpg" onload="javascript:MyImage(this);" border="0">'
 	  +'</div>'
 	  +'<div id="box_5_text">'
