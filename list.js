@@ -259,17 +259,15 @@ function get_follow_post(){
       data:{
 	u_id:$.cookie('id')
       },
-      url:'get_user_post.php',
+      url:'get_recent_act.php',
       success:function(data){
 	var hot = JSON.parse(data);
 	var i = 0;
 	var newest = [];
 	var cur_time = new Date();
 	while(i < hot.length){
-	  var time = new Date(hot[i].date) ;
-	  if((time - cur_time) / 86400000 < 3.00 && (time - cur_time) > 0)
-      newest.push(i);
-    i++;
+	  newest.push(i);
+	  i++;
 	}
 	display_reminder(data, newest);
       },
@@ -344,7 +342,7 @@ function display_content(data, fromwhere){
 	+'<p>'+ hot[i].title + '</p>'
 	+'</div>'
 	+'<div id="box_5_content">'
-	+'<div id="box_5_image" >'
+	+'<div class=\'box_5_image\' id="box_5_image_' + i + '\" name =' + hot[i].a_id+'>'
 	+'<img src="image2/'+file_exist+'.jpg">'
 	+'</div>'
 	+'<div id="box_5_text">'
@@ -367,17 +365,50 @@ function display_content(data, fromwhere){
 	);
     i--;
   }
-  //for(var i=0;i<hot.length;i++){
   $.each(num_array, function(index, value){
     $("#test"+hot[index].a_id).click(function(){
       if($.cookie('id') == null){
 	alert('請登入!!!');
       }
       else if(fromwhere == 1){
+	join_page_open(hot, $(this).attr('name'));
+      }
+      else if(fromwhere == 0){
+	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
+	var temp = $(this).attr('name');
+	$('#delete_confirm').data('a_id', temp).data('request', '2').dialog("open");
+      }
+      else if(fromwhere == -1){
+	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
+	var temp = $(this).attr('name');
+	$('#delete_confirm').data('a_id', temp).data('request', '1').dialog("open");
+      }
+      else if(fromwhere == 2){
+	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
+	var temp = $(this).attr('name');
+	var request;
+	if(hot[index].if_host == 1)
+	  request = 1;
+	else
+	  request = 2;
+	$('#delete_confirm').data('a_id', temp).data('request', request).dialog("open");
+      }
+
+    });
+    if(fromwhere != 1){
+      $("#box_5_image_"+index).css({"cursor":"pointer"});
+	$("#box_5_image_"+index).click(function(){
+	  join_page_open(hot, $(this).attr('name'));
+	});
+    }
+  });
+}
+
+function join_page_open(hot, name){
 	$( "#join_page" ).dialog( "open" );
 	$.ajax({
 	  data:{
-	    a_id:$(this).attr('name'),
+	    a_id:name,
 	  u_id:$.cookie('id')
 	  },
 	  url:'attending_list.php', // CGI URL
@@ -397,32 +428,8 @@ function display_content(data, fromwhere){
 	  error:function (xhr, ajaxOptions, thrownError) {
 	    alert(console.log(xhr));        
 	  }
-	}); 
-      }
-      else if(fromwhere == 0){
-	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
-	var temp = $(this).attr('name');
-	$('#delete_confirm').data('a_id', temp).data('request', '2').dialog("open");
-      }
-      else if(fromwhere == -1){
-	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
-	var temp = $(this).attr('name');
-	$('#delete_confirm').data('a_id', temp).data('request', '1').dialog("open");
-      }
-      else if(fromwhere == 2){
-	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
-	var temp = $(this).attr('name');
-	var request;
-	alert(hot[index].if_host);
-	if(hot[index].if_host == 1)
-	  request = 1;
-	else
-	  request = 2;
-	$('#delete_confirm').data('a_id', temp).data('request', request).dialog("open");
-      }
+	});
 
-    });
-  });
 }
 
 $(function() {

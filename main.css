@@ -424,12 +424,12 @@ text-align:center;
 	height: 300px;
 	margin-top:20px;
 }
-#box_5_image{
+.box_5_image{
 	width: 360px;
 	height: 200px;
         margin-left:8px;
 }
-#box_5_image img{
+.box_5_image img{
 	width:360px;
 	height:200px;
 }
