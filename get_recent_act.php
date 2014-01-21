@@ -23,6 +23,7 @@ while($data=mysql_fetch_array($result))
   $row_array['amount']=$data['amount'];
   $row_array['date']=$data['date'];
   $row_array['introduction']=urlencode($data['introduction']);
+  $row_array['if_host']=$data['if_host'];
 
   $act_id = $data['a_id'];
   //query for the amount of joined people

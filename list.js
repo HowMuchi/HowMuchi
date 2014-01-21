@@ -128,7 +128,7 @@ $('#recent_act').click(function(){
 	  url:'get_recent_act.php', // CGI URL
 	  success:function(data){
 	    //alert(data);
-	    content_fadeInOut(data,0);
+	    content_fadeInOut(data,2);
 	  },
     error:function (xhr, ajaxOptions, thrownError) {
       alert(console.log(xhr));        
@@ -315,6 +315,7 @@ function display_content(data, fromwhere){
   var test;
   var image;
   var message;
+  var num_array = [];
   $("#content_left").html('');
   if(fromwhere == 1){
     message = '我要參加';
@@ -324,6 +325,13 @@ function display_content(data, fromwhere){
     message = '解散開團';
   }
   while(i>-1){
+    num_array.push(i);
+    if(fromwhere == 2){
+      if(hot[i].if_host == 1)
+	message = '解散開團';
+      else
+	message = '取消參加';
+    }
     if(IsFileExist('image2/'+hot[i].a_id+'.jpg'))
       file_exist = hot[i].a_id;
     else
@@ -359,8 +367,9 @@ function display_content(data, fromwhere){
 	);
     i--;
   }
-  for(var i=0;i<hot.length;i++){
-    $("#test"+hot[i].a_id).click(function(){
+  //for(var i=0;i<hot.length;i++){
+  $.each(num_array, function(index, value){
+    $("#test"+hot[index].a_id).click(function(){
       if($.cookie('id') == null){
 	alert('請登入!!!');
       }
@@ -400,8 +409,20 @@ function display_content(data, fromwhere){
 	var temp = $(this).attr('name');
 	$('#delete_confirm').data('a_id', temp).data('request', '1').dialog("open");
       }
+      else if(fromwhere == 2){
+	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
+	var temp = $(this).attr('name');
+	var request;
+	alert(hot[index].if_host);
+	if(hot[index].if_host == 1)
+	  request = 1;
+	else
+	  request = 2;
+	$('#delete_confirm').data('a_id', temp).data('request', request).dialog("open");
+      }
+
     });
-  }
+  });
 }
 
 $(function() {
