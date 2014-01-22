@@ -405,7 +405,7 @@ function display_content(data, fromwhere){
 }
 
 function join_page_open(hot, name){
-	$( "#join_page" ).dialog( "open" );
+	$( "#activity_info_dialog" ).dialog( "open" );
 	$.ajax({
 	  data:{
 	    a_id:name,
@@ -416,12 +416,12 @@ function join_page_open(hot, name){
 	    var join=JSON.parse(data);
 	    for(var k=0;k<hot.length;k++){
 	      if(join.a_id==hot[k].a_id) {
-		$("#join_page").empty();
-		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
+		$("#activity_info_dialog").empty();
+		$("#activity_info_dialog").append("標題"+"  "+hot[k].title+"</br>"+
 		  "出遊時間"+"   "+hot[k].date+"</br>"+
 		  "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
 		  "簡介"+"    "+hot[k].introduction);
-		$("#join_page").attr("name",join.a_id);
+		$("#activity_info_dialog").attr("name",join.a_id);
 	     }
 	    }
 	  },
