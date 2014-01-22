@@ -371,7 +371,30 @@ function display_content(data, fromwhere){
 	alert('請登入!!!');
       }
       else if(fromwhere == 1){
-	join_page_open(hot, $(this).attr('name'));
+	$( "#join_page" ).dialog( "open" );
+	$.ajax({
+	  data:{
+	    a_id:$(this).attr('name'),
+	  u_id:$.cookie('id')
+	  },
+	  url:'attending_list.php', // CGI URL
+	  success:function(data){
+	    var join=JSON.parse(data);
+	    for(var k=0;k<hot.length;k++){
+	      if(join.a_id==hot[k].a_id) {
+		$("#join_page").empty();
+		$("#join_page").append("標題"+"  "+hot[k].title+"</br>"+
+		  "出遊時間"+"   "+hot[k].date+"</br>"+
+		  "目前情況:"+"    "+join.cur_people+"/"+join.need_people+"</br>"+
+		  "簡介"+"    "+hot[k].introduction);
+		$("#join_page").attr("name",join.a_id);
+	     }
+	    }
+	  },
+	  error:function (xhr, ajaxOptions, thrownError) {
+	    alert(console.log(xhr));        
+	  }
+	});
       }
       else if(fromwhere == 0){
 	$('#delete_confirm').html('<p align=\'center\' display=\'block\'>確定要刪除嗎?</p>');
